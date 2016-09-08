@@ -68,9 +68,11 @@ public class TurnBasedCombat {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(153, 153, 153));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		
 		JLabel lblTurnBasedCombat = new JLabel("Turn Based Combat");
 		lblTurnBasedCombat.setFont(new Font("Stencil", Font.PLAIN, 20));
@@ -94,7 +96,6 @@ public class TurnBasedCombat {
 		
 		JPanelBackground panelFondoImg = new JPanelBackground();
 		
-		String imagepath ="/Trabajo-Practico/img/barbaro.png";
 		panelFondoImg.setBackground("img/barbaro.png");
 		panelFondoImg.setOpaque(false);
 		
@@ -108,13 +109,14 @@ public class TurnBasedCombat {
 							.addComponent(lblTurnBasedCombat))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(separator, GroupLayout.PREFERRED_SIZE, 414, GroupLayout.PREFERRED_SIZE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(10)
 									.addComponent(panelFondoImg, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)
-									.addGap(39)
-									.addComponent(btnInicarJuego))
-								.addComponent(separator, GroupLayout.PREFERRED_SIZE, 414, GroupLayout.PREFERRED_SIZE))))
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(btnInicarJuego)
+									.addGap(39)))))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -126,11 +128,11 @@ public class TurnBasedCombat {
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(83)
-							.addComponent(btnInicarJuego, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(panelFondoImg, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(panelFondoImg, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(70)
+							.addComponent(btnInicarJuego, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
 					.addGap(25))
 		);
 		frame.getContentPane().setLayout(groupLayout);
