@@ -72,6 +72,7 @@ public class TurnBasedCombat {
 		frame.getContentPane().setBackground(new Color(153, 153, 153));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		
 		
 		JLabel lblTurnBasedCombat = new JLabel("Turn Based Combat");
