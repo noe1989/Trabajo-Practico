@@ -67,7 +67,7 @@ public class TurnBasedCombat {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrameBackground();
 		frame.setResizable(false);
 		frame.getContentPane().setBackground(new Color(153, 153, 153));
 		frame.setBounds(100, 100, 450, 300);
