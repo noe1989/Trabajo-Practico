@@ -38,7 +38,7 @@ import java.awt.event.MouseEvent;
 public class TurnBasedCombat {
 
 	private JFrame frame;
-	private JDesktopPane desktopPane;
+
 
 	/**
 	 * Launch the application.
@@ -89,7 +89,7 @@ public class TurnBasedCombat {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnInicarJuego.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnInicarJuego.setFont(new Font("Verdana", Font.PLAIN, 15));
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(Color.BLACK);
