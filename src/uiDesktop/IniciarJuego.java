@@ -50,8 +50,7 @@ public class IniciarJuego extends JPanel {
 		setLayout(groupLayout);
 
 		
-		
-		
+				
 		
 	}
 }

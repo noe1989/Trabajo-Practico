@@ -24,7 +24,12 @@ public class Panel1 extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Panel1() {
+	
+	
+	
+	public Panel1(JFrame frame) {
+		
+		this.frame = frame;
 		
 		this.setBackground(new Color(153, 153, 153));
 		
@@ -37,13 +42,14 @@ public class Panel1 extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				iniciarJuego();
+				
 			}
 		});
 		btnInicarJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnInicarJuego.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnInicarJuego.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(Color.BLACK);
@@ -92,18 +98,15 @@ public class Panel1 extends JPanel {
 		setLayout(groupLayout);
 	}
 
-	public void Panel1(JFrame frame){
-		
-		frame = this.frame;
-	}
 	
 	private void iniciarJuego(){
 		
 		System.out.println("Hola aaaaaa");
 		
+		IniciarJuego init = new IniciarJuego();
 		
-		
-
 		
 	}
+	
+	
 }
