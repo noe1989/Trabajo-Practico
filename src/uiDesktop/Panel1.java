@@ -1,81 +1,32 @@
 package uiDesktop;
 
-import java.awt.EventQueue;
-import uiDesktop.JPanelBackground;
-import java.awt.FlowLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
-
-import com.sun.javafx.tk.Toolkit;
-
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JPanel;
-import javax.swing.JDesktopPane;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class TurnBasedCombat {
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
+public class Panel1 extends JPanel {
+	
 	private JFrame frame;
-	private JDesktopPane desktopPane;
-
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TurnBasedCombat window = new TurnBasedCombat();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public TurnBasedCombat() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.getContentPane().setBackground(new Color(153, 153, 153));
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public Panel1() {
 		
+		this.setBackground(new Color(153, 153, 153));
 		
 		JLabel lblTurnBasedCombat = new JLabel("Turn Based Combat");
 		lblTurnBasedCombat.setFont(new Font("Stencil", Font.PLAIN, 20));
@@ -102,7 +53,7 @@ public class TurnBasedCombat {
 		panelFondoImg.setBackground("img/barbaro.png");
 		panelFondoImg.setOpaque(false);
 		
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -138,32 +89,21 @@ public class TurnBasedCombat {
 							.addComponent(btnInicarJuego, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
 					.addGap(25))
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		setLayout(groupLayout);
 	}
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "SwingAction");
-			putValue(SHORT_DESCRIPTION, "Some short description");
-		}
-		public void actionPerformed(ActionEvent e) {
-		}
+
+	public void Panel1(JFrame frame){
+		
+		frame = this.frame;
 	}
 	
-	
-	
-	void iniciarJuego(){
+	private void iniciarJuego(){
+		
+		System.out.println("Hola aaaaaa");
 		
 		
+		
+
 		
 	}
 }
-	
-	
-
-
-
-
-
-
-
-

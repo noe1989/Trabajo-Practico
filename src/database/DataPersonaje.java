@@ -37,8 +37,7 @@ public void add(Personaje p){
 		} 
 		
 	}
-	
-	public void update(Personaje p){
+		public void update(Personaje p){
 		
 		
 	}
