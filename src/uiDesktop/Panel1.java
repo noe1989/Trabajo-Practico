@@ -21,6 +21,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class Panel1 extends JPanel {
 	
 	private JFrame frame;
+	private TurnBasedCombat2 tbc;
+
+	
 	/**
 	 * Create the panel.
 	 */
@@ -101,9 +104,13 @@ public class Panel1 extends JPanel {
 	
 	private void iniciarJuego(){
 		
-		System.out.println("Hola aaaaaa");
+		System.out.println("Iniciar Juego");
 		
 		IniciarJuego init = new IniciarJuego();
+		
+		TurnBasedCombat2 tbc = new TurnBasedCombat2();
+		tbc.cambiarPanel(init);
+		
 		
 		
 	}
