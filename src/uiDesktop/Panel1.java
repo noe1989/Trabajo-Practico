@@ -107,9 +107,8 @@ public class Panel1 extends JPanel {
 		System.out.println("Iniciar Juego");
 		
 		IniciarJuego init = new IniciarJuego();
-		
 		TurnBasedCombat2 tbc = new TurnBasedCombat2();
-		tbc.cambiarPanel(init);
+		tbc.cambiarPanel(init, "IniciarJuego");
 		
 		
 		

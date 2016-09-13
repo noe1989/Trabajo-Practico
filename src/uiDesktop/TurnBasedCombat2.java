@@ -3,6 +3,7 @@ package uiDesktop;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -51,8 +52,24 @@ public class TurnBasedCombat2 extends JFrame {
 		contentPane.setLayout(cl);
 		
 		Panel1 p1 = new Panel1(this);		
+		cl.addLayoutComponent(p1, "Panel1");
 		contentPane.add(p1, "Panel1");
 		
+		IniciarJuego ini = new IniciarJuego();
+		cl.addLayoutComponent(ini, "IniciarJuego");
+		contentPane.add(ini, "IniciarJuego");
+		
+		cl.show(contentPane, "Panel1");
+		
+		
+		/*try {
+			TimeUnit.SECONDS.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cl.show(contentPane, "IniciarJuego");
+		*/
 	
 
 		
@@ -60,9 +77,14 @@ public class TurnBasedCombat2 extends JFrame {
 		
 	}
 	
-	public void cambiarPanel(JPanel panel){
+	public void cambiarPanel(JPanel panel, String name){
 		
 		System.out.println("Cambiar panel");
+		
+		cl.addLayoutComponent(panel, name);
+		contentPane.add(panel, name);
+		cl.show(contentPane, name);
+		
 		
 	
 		
