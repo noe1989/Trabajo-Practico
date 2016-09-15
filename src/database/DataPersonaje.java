@@ -16,9 +16,9 @@ public class DataPersonaje {
 	
 	
 	
-public void add(Personaje p){
+	public void add(Personaje p){
 		
-		ResultSet rs = null;
+		//ResultSet rs = null;
 		PreparedStatement stmt=null;
 		
 		try {
@@ -37,12 +37,33 @@ public void add(Personaje p){
 		} 
 		
 	}
-		public void update(Personaje p){
+	
+	public void update(Personaje p){
 		
 		
 	}
 	
 	public void delete(Personaje p){
+		
+		
+	}
+	
+	public ResultSet gridPersonajes(){
+		
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("SELECT idPersonaje, nombre FROM personajes;");
+			rs = stmt.executeQuery();
+		
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}		
+		
+		
+		return rs;
 		
 		
 	}

@@ -45,7 +45,7 @@ public class TurnBasedCombat extends JFrame {
 		setIconImage(img.getImage());
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 530, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -64,6 +64,7 @@ public class TurnBasedCombat extends JFrame {
 	
 	public void cambiarPanel(JPanel panel, String name){
 		
+		
 		cl.addLayoutComponent(panel, name);
 		contentPane.add(panel, name);
 		cl.show(contentPane, name);
@@ -71,4 +72,9 @@ public class TurnBasedCombat extends JFrame {
 		
 	}
 
+	public void cambiarAPanelExistente(String name){
+		
+		cl.show(contentPane, name);
+		
+	}
 }
