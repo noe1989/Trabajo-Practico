@@ -4,16 +4,18 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
 
 public class IniciarJuego extends JPanel {
 
+
 	/**
 	 * Create the panel.
 	 */
-	public IniciarJuego() {
+	public IniciarJuego(JFrame frame) {
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		

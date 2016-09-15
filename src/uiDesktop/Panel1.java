@@ -1,7 +1,6 @@
 package uiDesktop;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +19,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Panel1 extends JPanel {
 	
-	private JFrame frame;
-	private TurnBasedCombat2 tbc;
 
 	
 	/**
@@ -32,8 +29,7 @@ public class Panel1 extends JPanel {
 	
 	public Panel1(JFrame frame) {
 		
-		this.frame = frame;
-		
+				
 		this.setBackground(new Color(153, 153, 153));
 		
 		JLabel lblTurnBasedCombat = new JLabel("Turn Based Combat");
@@ -44,7 +40,7 @@ public class Panel1 extends JPanel {
 		btnInicarJuego.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				iniciarJuego();
+				iniciarJuego(frame);
 				
 			}
 		});
@@ -102,13 +98,11 @@ public class Panel1 extends JPanel {
 	}
 
 	
-	private void iniciarJuego(){
+	private void iniciarJuego(JFrame frame){
 		
-		System.out.println("Iniciar Juego");
+		IniciarJuego init = new IniciarJuego(frame);
 		
-		IniciarJuego init = new IniciarJuego();
-		TurnBasedCombat2 tbc = new TurnBasedCombat2();
-		tbc.cambiarPanel(init, "IniciarJuego");
+		((TurnBasedCombat) frame).cambiarPanel(init, "IniciarJuego");
 		
 		
 		
