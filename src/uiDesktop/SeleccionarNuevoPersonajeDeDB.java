@@ -48,7 +48,10 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				String nombreSeleccionado = list.getSelectedValue();
+				//String nombreSeleccionado = list.getSelectedValue();
+				
+				String nombreSeleccionado = String.valueOf(modeloTabla.getValueAt(table.getSelectedRow(),1));
+				
 				System.out.println(nombreSeleccionado);
 				
 				seleccionarPersonaje(frame);
@@ -97,9 +100,10 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 		llenarLista();*/
 		
 		table = new JTable();
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
 		llenarTabla();
-	
+		
 				
 
 	}
@@ -131,14 +135,30 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 		   
 		DataPersonaje dbPersonaje = new DataPersonaje();
 		
+		modeloTabla.addColumn("ID");
+		modeloTabla.addColumn("Nombre");
+		modeloTabla.addColumn("Puntos Totales");
+
+		
+		
 		try {
 	        ResultSet rs = dbPersonaje.gridPersonajes(); 
 	        
 	        while(rs.next()){
-	           //tabla.addRow(rs.getString("nombre"));
+	        	
+	        	int id = rs.getInt("idPersonaje");
+	        	String nombre = rs.getString("nombre");
+	        	int ptsTotales = rs.getInt("puntosTotales");
+	        	
+	        	Object [] fila = new Object[3];
+	        	fila[0] = id;
+	        	fila[1] = nombre;
+	        	fila[2] = ptsTotales;
+	        	
+	        	modeloTabla.addRow(fila);
 	        }
 	        
-	       // list.setModel(modeloLista);
+	        table.setModel(modeloTabla);
 
 	        
 

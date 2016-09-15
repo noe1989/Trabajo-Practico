@@ -1,18 +1,11 @@
 package uiDesktop;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.io.File;
-import java.util.concurrent.TimeUnit;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
-import java.awt.Color;
 
 public class TurnBasedCombat extends JFrame {
 
