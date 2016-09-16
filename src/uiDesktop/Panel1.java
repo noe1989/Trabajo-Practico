@@ -14,22 +14,29 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+
+import juego.ControladorJuego;
+
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Panel1 extends JPanel {
+
+	ControladorJuego ctrl;
 	
 
-	
-	/**
-	 * Create the panel.
-	 */
-	
+	public ControladorJuego getCtrl() {
+		return ctrl;
+	}
+
+	public void setCtrl(ControladorJuego ctrl) {
+		this.ctrl = ctrl;
+	}
 	
 	
 	public Panel1(JFrame frame) {
 		
-				
+		
 		this.setBackground(new Color(153, 153, 153));
 		
 		JLabel lblTurnBasedCombat = new JLabel("Turn Based Combat");
@@ -94,13 +101,15 @@ public class Panel1 extends JPanel {
 					.addGap(99))
 		);
 		setLayout(groupLayout);
+		
+	
 	}
 
 	
 	private void iniciarJuego(JFrame frame){
 		
 		IniciarJuego init = new IniciarJuego(frame);
-			
+		init.setCtrl(ctrl);	
 		
 		((TurnBasedCombat) frame).cambiarPanel(init, "IniciarJuego");
 		

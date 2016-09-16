@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import entidades.Personaje;
+import juego.ControladorJuego;
 
 import javax.swing.JSeparator;
 import java.awt.Font;
@@ -28,6 +29,16 @@ public class CrearNuevoPersonaje extends JPanel {
 	private JTextField textDefensa;
 	private JTextField textEvasion;
 	private JTextField textField;
+	
+	private ControladorJuego ctrl;
+
+	public ControladorJuego getCtrl() {
+		return ctrl;
+	}
+
+	public void setCtrl(ControladorJuego ctrl) {
+		this.ctrl = ctrl;
+	}
 
 	/**
 	 * Create the panel.
@@ -211,10 +222,14 @@ public class CrearNuevoPersonaje extends JPanel {
 		personaje.setVida(Integer.parseInt(textVida.getText()));
 		personaje.setNombre(textNombre.getText());
 		
-		DataPersonaje dbPersonaje = new DataPersonaje();
+		ctrl.agregarPersonaje(personaje);
 		
-		dbPersonaje.add(personaje);
-		
+	
+		if(ctrl.getJugador1() == null){
+			ctrl.setJugador1(personaje);
+		}else{
+			ctrl.setJugador2(personaje);
+		}
 		((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
 	}
 }

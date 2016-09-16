@@ -3,7 +3,6 @@ package database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import entidades.*;
 
 
@@ -76,30 +75,44 @@ public class DataPersonaje {
 		
 	}
 	
-	public int nuevoId(){
-		ResultSet rs = null;
-		PreparedStatement stmt = null;
+	public Personaje getById(int id){
 		
-	
-			try {
-				stmt = FactoryConexion.getInstancia().getConn().prepareStatement("SELECT idPersonaje FROM personajes", PreparedStatement.RETURN_GENERATED_KEYS);
-				
+		Personaje p = null;
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try{
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("SELECT idPersonaje, nombre, vida, energia, defensa, evasion, puntosTotales FROM personajes WHERE idPersonaje = ?");
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
 			
-				stmt.execute();
-				
-				rs = stmt.getGeneratedKeys();
-				if(rs!=null && rs.next()){
-					resultado = rs.getInt(1);
+			if(rs!=null && rs.next()){
+				p = new Personaje();
+				p.setIdPersonaje(rs.getInt("idPersonaje"));
+				p.setNombre(rs.getString("nombre"));
+				p.setVida(rs.getInt("vida"));
+				p.setEnergia(rs.getInt("energia"));
+				p.setDefensa(rs.getInt("defensa"));
+				p.setEvasion(rs.getInt("evasion"));
+				p.setPuntosTotales(rs.getInt("puntosTotales"));
 				}
-				
-	
-				
-			
-				
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
-			return resultado;
+			}finally{
+				if(rs!=null) {
+					try {
+						rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				FactoryConexion.getInstancia().releaseConn();
+		}
+		
+		
+		return p;
 	}
 
 }

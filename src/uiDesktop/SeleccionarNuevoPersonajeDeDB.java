@@ -14,6 +14,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTable;
 
 import database.DataPersonaje;
+import entidades.Personaje;
+import juego.ControladorJuego;
 
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -23,20 +25,29 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 	
+	
+	ControladorJuego ctrl;
+	
+
+	public ControladorJuego getCtrl() {
+		return ctrl;
+	}
+
+	public void setCtrl(ControladorJuego ctrl) {
+		this.ctrl = ctrl;
+	}
+	
 	private JList<String> list;
 	private JTable table;
-	
 	private DefaultListModel<String> modeloLista = new DefaultListModel<String>();
 	private DefaultTableModel modeloTabla = new DefaultTableModel();
 	
-	/**
-	 * Create the panel.
-	 */
 	public SeleccionarNuevoPersonajeDeDB(JFrame frame) {
-		
 		JLabel lblSeleccionarPersonajeExistente = new JLabel("Seleccionar Personaje Existente");
 		lblSeleccionarPersonajeExistente.setFont(new Font("Dialog", Font.BOLD, 17));
 		
@@ -49,14 +60,10 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				//String nombreSeleccionado = list.getSelectedValue();
 				
-				String nombreSeleccionado = String.valueOf(modeloTabla.getValueAt(table.getSelectedRow(),1));
 				int idSeleccionado = Integer.parseInt(String.valueOf(modeloTabla.getValueAt(table.getSelectedRow(), 0)));
-				System.out.println(nombreSeleccionado + " " + idSeleccionado);
 				
-				
-				seleccionarPersonaje(frame, idSeleccionado, nombreSeleccionado);
+				seleccionarPersonaje(frame, idSeleccionado);
 				
 			}
 		});
@@ -95,11 +102,6 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 		
 		
 		setLayout(groupLayout);
-	
-		/*list = new JList<String>();
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(list);		
-		llenarLista();*/
 		
 		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -110,28 +112,6 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 
 	}
 	
-
-	/*private void llenarLista(){
-	   
-		DataPersonaje dbPersonaje = new DataPersonaje();
-		
-		try {
-	        ResultSet rs = dbPersonaje.gridPersonajes(); //La consulta tiene que devolver un ResultSet para tratar los datos
-	        
-	        while(rs.next()){
-	            modeloLista.addElement(rs.getString("nombre")); //nombre es el campo de la base de datos
-	    
-	        }
-	        
-	        list.setModel(modeloLista);
-
-	        
-
-	    } catch (SQLException e) {
-	      
-	    	e.printStackTrace();
-	    }
-	}*/
 	
 	private void llenarTabla(){
 		   
@@ -140,8 +120,7 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 		modeloTabla.addColumn("ID");
 		modeloTabla.addColumn("Nombre");
 		modeloTabla.addColumn("Puntos Totales");
-
-		
+	
 		
 		try {
 	        ResultSet rs = dbPersonaje.gridPersonajes(); 
@@ -170,7 +149,15 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 	    }
 	}
 	
-	private void seleccionarPersonaje(JFrame frame, int idSeleccionado, String nombSeleccionado){
+	private void seleccionarPersonaje(JFrame frame, int idSeleccionado){
+		
+		Personaje p = ctrl.buscarPersonaje(idSeleccionado);
+		
+		if(ctrl.getJugador1() == null){
+			ctrl.setJugador1(p);
+		}else{
+			ctrl.setJugador2(p);
+		}
 		
 		((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
 	}

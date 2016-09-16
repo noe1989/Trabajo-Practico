@@ -14,27 +14,40 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import entidades.Personaje;
+import juego.ControladorJuego;
 
 import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 
 public class IniciarJuego extends JPanel {
-	private JTextField txtJugador1;
+	private JTextField textJugador1;
 	private JTextField textJugador2;
+
+	ControladorJuego ctrl;
 	
-	public int idJug1;
-	public int idJug2;
-	public String nomJug1;
-	public String nomJug2;
 
+	public ControladorJuego getCtrl() {
+		return ctrl;
+	}
 
-	/**
-	 * Create the panel.
-	 */
+	public void setCtrl(ControladorJuego ctrl) {
+		this.ctrl = ctrl;
+	}
+
 	public IniciarJuego(JFrame frame) {
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				actualizar();
+			}
+		});
 		setBackground(new Color(153, 153, 153));
 		
 		JLabel lblTitulo = new JLabel("Seleccionar Personaje");
@@ -42,10 +55,10 @@ public class IniciarJuego extends JPanel {
 		
 		JLabel lblVs = new JLabel("VS");
 		
-		txtJugador1 = new JTextField();
-		txtJugador1.setHorizontalAlignment(SwingConstants.CENTER);
-		txtJugador1.setEditable(false);
-		txtJugador1.setColumns(10);
+		textJugador1 = new JTextField();
+		textJugador1.setHorizontalAlignment(SwingConstants.CENTER);
+		textJugador1.setEditable(false);
+		textJugador1.setColumns(10);
 		
 		JLabel lblJugador1 = new JLabel("Jugador 1");
 		
@@ -116,7 +129,7 @@ public class IniciarJuego extends JPanel {
 							.addGap(192)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED, 224, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(202)
@@ -133,7 +146,7 @@ public class IniciarJuego extends JPanel {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblJugador1)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(txtJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(lblVs)
 					.addGap(18)
@@ -156,11 +169,16 @@ public class IniciarJuego extends JPanel {
 		
 	}
 	
-	protected void seleccionarPersonajeDB(JFrame frame) {
+	private void seleccionarPersonajeDB(JFrame frame) {
 		
 		SeleccionarNuevoPersonajeDeDB selectPersonaje = new SeleccionarNuevoPersonajeDeDB(frame);
 		
+		selectPersonaje.setCtrl(ctrl);
+		
 		((TurnBasedCombat) frame).cambiarPanel(selectPersonaje, "SeleccionarPersonajeDB");
+		
+		
+	
 		
 	}
 
@@ -168,51 +186,24 @@ public class IniciarJuego extends JPanel {
 		
 		CrearNuevoPersonaje cnp = new CrearNuevoPersonaje(frame);
 		
+		cnp.setCtrl(ctrl);
+		
 		((TurnBasedCombat) frame).cambiarPanel(cnp, "CrearNuevoPersonaje");
 	}
 	
-	private void asignarPersonaje(Personaje personaje){
-		
-		//Acá asignamos cada personaje para cada jugador y mostramos el nombre en los TextFields
+	private void actualizar(){
+		if(ctrl.getJugador1() != null){
+			textJugador1.setText(String.valueOf(ctrl.getJugador1().getNombre()));
+		}
+		if(ctrl.getJugador2() != null){
+			textJugador2.setText(String.valueOf(ctrl.getJugador2().getNombre()));
+		}
 	}
-	
-	
-	public int getIdJug1() {
-		return idJug1;
-	}
-
-	public void setIdJug1(int idJug1) {
-		this.idJug1 = idJug1;
-	}
-
-	public int getIdJug2() {
-		return idJug2;
-	}
-
-	public void setIdJug2(int idJug2) {
-		this.idJug2 = idJug2;
-	}
-
-	public String getNomJug1() {
-		return nomJug1;
-	}
-
-	public void setNomJug1(String nomJug1) {
-		this.nomJug1 = nomJug1;
-	}
-
-	public String getNomJug2() {
-		return nomJug2;
-	}
-
-	public void setNomJug2(String nomJug2) {
-		this.nomJug2 = nomJug2;
-	}
-	
 	
 	public void continuar (JFrame frame){
 	       
 		PlayerSeleccionado ps = new PlayerSeleccionado(frame);
 		((TurnBasedCombat) frame).cambiarPanel(ps, "PlayerSeleccionado");
+		
 	}
 }
