@@ -30,6 +30,8 @@ public class IniciarJuego extends JPanel {
 	private JTextField textJugador1;
 	private JTextField textJugador2;
 
+	private JButton btnSeleccionar;
+
 	ControladorJuego ctrl;
 	
 
@@ -73,7 +75,7 @@ public class IniciarJuego extends JPanel {
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setOrientation(SwingConstants.VERTICAL);
 		
-		JButton btnSeleccionar = new JButton("Seleccionar");
+		btnSeleccionar = new JButton("Seleccionar");
 		btnSeleccionar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -163,6 +165,7 @@ public class IniciarJuego extends JPanel {
 					.addContainerGap())
 		);
 		setLayout(groupLayout);
+		
 
 		
 				
@@ -192,12 +195,18 @@ public class IniciarJuego extends JPanel {
 	}
 	
 	private void actualizar(){
+		
 		if(ctrl.getJugador1() != null){
 			textJugador1.setText(String.valueOf(ctrl.getJugador1().getNombre()));
 		}
 		if(ctrl.getJugador2() != null){
-			textJugador2.setText(String.valueOf(ctrl.getJugador2().getNombre()));
+				textJugador2.setText(String.valueOf(ctrl.getJugador2().getNombre()));
 		}
+		
+		if(ctrl.getJugador1() != null && ctrl.getJugador2() != null){
+			btnSeleccionar.setEnabled(false);
+		}
+		
 	}
 	
 	public void continuar (JFrame frame){

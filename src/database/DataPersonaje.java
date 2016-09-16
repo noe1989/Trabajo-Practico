@@ -9,7 +9,7 @@ import entidades.*;
 
 public class DataPersonaje {
 	
-	private int resultado;
+	
 	
 	public DataPersonaje(){
 		
