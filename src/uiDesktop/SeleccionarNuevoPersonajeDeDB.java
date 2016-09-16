@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 	
@@ -51,10 +52,11 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 				//String nombreSeleccionado = list.getSelectedValue();
 				
 				String nombreSeleccionado = String.valueOf(modeloTabla.getValueAt(table.getSelectedRow(),1));
+				int idSeleccionado = Integer.parseInt(String.valueOf(modeloTabla.getValueAt(table.getSelectedRow(), 0)));
+				System.out.println(nombreSeleccionado + " " + idSeleccionado);
 				
-				System.out.println(nombreSeleccionado);
 				
-				seleccionarPersonaje(frame);
+				seleccionarPersonaje(frame, idSeleccionado, nombreSeleccionado);
 				
 			}
 		});
@@ -64,16 +66,16 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(115)
-							.addComponent(lblSeleccionarPersonajeExistente))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(12)
 							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 506, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(136)
+							.addComponent(lblSeleccionarPersonajeExistente))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(124)
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 282, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(198)
+							.addGap(218)
 							.addComponent(btnSeleccionar)))
 					.addContainerGap(12, Short.MAX_VALUE))
 		);
@@ -82,13 +84,13 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(12)
 					.addComponent(lblSeleccionarPersonajeExistente)
-					.addGap(6)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
-					.addGap(40)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
+					.addGap(38)
 					.addComponent(btnSeleccionar)
-					.addContainerGap())
+					.addGap(70))
 		);
 		
 		
@@ -168,7 +170,7 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 	    }
 	}
 	
-	private void seleccionarPersonaje(JFrame frame){
+	private void seleccionarPersonaje(JFrame frame, int idSeleccionado, String nombSeleccionado){
 		
 		((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
 	}

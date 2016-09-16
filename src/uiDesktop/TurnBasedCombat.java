@@ -3,6 +3,8 @@ package uiDesktop;
 import java.awt.EventQueue;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
@@ -36,7 +38,13 @@ public class TurnBasedCombat extends JFrame {
 		
 		ImageIcon img = new ImageIcon("img/barbaro.png");
 		setIconImage(img.getImage());
-		
+		 
+		/*ImageIcon uno=new ImageIcon(this.getClass().getResource("img/fondoJuego.png")); 
+		  JLabel fondo= new JLabel(); 
+		  fondo.setIcon(uno); getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER); 
+		  fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
+		  setSize(530,400); */
+		setSize(530,400); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 530, 400);
 		contentPane = new JPanel();

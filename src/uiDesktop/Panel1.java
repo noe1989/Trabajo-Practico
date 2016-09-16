@@ -100,6 +100,7 @@ public class Panel1 extends JPanel {
 	private void iniciarJuego(JFrame frame){
 		
 		IniciarJuego init = new IniciarJuego(frame);
+			
 		
 		((TurnBasedCombat) frame).cambiarPanel(init, "IniciarJuego");
 		

@@ -10,6 +10,8 @@ import entidades.*;
 
 public class DataPersonaje {
 	
+	private int resultado;
+	
 	public DataPersonaje(){
 		
 	}
@@ -18,11 +20,11 @@ public class DataPersonaje {
 	
 	public void add(Personaje p){
 		
-		//ResultSet rs = null;
-		PreparedStatement stmt=null;
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
 		
 		try {
-			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("insert into personajes(idPersonaje, nombre, vida, energia, defensa, evasion, puntosTotales)"+"values(?,?,?,?,?,?,?)");
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("insert into personajes(idPersonaje, nombre, vida, energia, defensa, evasion, puntosTotales)"+"values(?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, p.getIdPersonaje());
 			stmt.setString(2, p.getNombre());
 			stmt.setInt(3, p.getVida());
@@ -32,6 +34,12 @@ public class DataPersonaje {
 			stmt.setInt(7, p.getPuntosTotales());
 
 			stmt.execute();
+			
+			rs = stmt.getGeneratedKeys();
+			if(rs!=null && rs.next()){
+				p.setIdPersonaje(rs.getInt(1));
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
@@ -66,6 +74,32 @@ public class DataPersonaje {
 		return rs;
 		
 		
+	}
+	
+	public int nuevoId(){
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
+		
+	
+			try {
+				stmt = FactoryConexion.getInstancia().getConn().prepareStatement("SELECT idPersonaje FROM personajes", PreparedStatement.RETURN_GENERATED_KEYS);
+				
+			
+				stmt.execute();
+				
+				rs = stmt.getGeneratedKeys();
+				if(rs!=null && rs.next()){
+					resultado = rs.getInt(1);
+				}
+				
+	
+				
+			
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return resultado;
 	}
 
 }

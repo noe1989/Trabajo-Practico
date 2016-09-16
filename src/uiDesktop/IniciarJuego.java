@@ -24,6 +24,11 @@ import java.awt.event.MouseEvent;
 public class IniciarJuego extends JPanel {
 	private JTextField txtJugador1;
 	private JTextField textJugador2;
+	
+	public int idJug1;
+	public int idJug2;
+	public String nomJug1;
+	public String nomJug2;
 
 
 	/**
@@ -60,6 +65,7 @@ public class IniciarJuego extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				seleccionarPersonajeDB(frame);
+				
 			}
 		});
 		
@@ -72,6 +78,13 @@ public class IniciarJuego extends JPanel {
 		});
 		
 		JButton btnContinuar = new JButton("Continuar");
+		btnContinuar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				continuar(frame);
+				
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -161,5 +174,45 @@ public class IniciarJuego extends JPanel {
 	private void asignarPersonaje(Personaje personaje){
 		
 		//Acá asignamos cada personaje para cada jugador y mostramos el nombre en los TextFields
+	}
+	
+	
+	public int getIdJug1() {
+		return idJug1;
+	}
+
+	public void setIdJug1(int idJug1) {
+		this.idJug1 = idJug1;
+	}
+
+	public int getIdJug2() {
+		return idJug2;
+	}
+
+	public void setIdJug2(int idJug2) {
+		this.idJug2 = idJug2;
+	}
+
+	public String getNomJug1() {
+		return nomJug1;
+	}
+
+	public void setNomJug1(String nomJug1) {
+		this.nomJug1 = nomJug1;
+	}
+
+	public String getNomJug2() {
+		return nomJug2;
+	}
+
+	public void setNomJug2(String nomJug2) {
+		this.nomJug2 = nomJug2;
+	}
+	
+	
+	public void continuar (JFrame frame){
+	       
+		PlayerSeleccionado ps = new PlayerSeleccionado(frame);
+		((TurnBasedCombat) frame).cambiarPanel(ps, "PlayerSeleccionado");
 	}
 }
