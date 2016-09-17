@@ -35,9 +35,10 @@ public class ControladorJuego {
 	
 	
 	public void agregarPersonaje(Personaje personaje){
-	DataPersonaje dbPersonaje = new DataPersonaje();
 	
-    dbPersonaje.add(personaje);
+		DataPersonaje dbPersonaje = new DataPersonaje();
+	
+		dbPersonaje.add(personaje);
 	}
 
 
@@ -51,6 +52,12 @@ public class ControladorJuego {
 		
 		return p;
 		
+	}
+	
+	public void modificarPersonaje(Personaje p){
+		DataPersonaje dbPersonaje = new DataPersonaje();	
+		
+		dbPersonaje.update(p);
 	}
 
 

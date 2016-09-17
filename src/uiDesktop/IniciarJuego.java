@@ -8,30 +8,27 @@ import javax.swing.JFrame;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import entidades.Personaje;
 import juego.ControladorJuego;
 
 import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 
 public class IniciarJuego extends JPanel {
+
 	private JTextField textJugador1;
 	private JTextField textJugador2;
 
 	private JButton btnSeleccionar;
-
+	private JButton btnCrear;
+	
 	ControladorJuego ctrl;
 	
 
@@ -79,16 +76,20 @@ public class IniciarJuego extends JPanel {
 		btnSeleccionar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				seleccionarPersonajeDB(frame);
+				if(btnSeleccionar.isEnabled()){
+					seleccionarPersonajeDB(frame);
+				}
 				
 			}
 		});
 		
-		JButton btnCrear = new JButton("Crear Nuevo");
+		btnCrear = new JButton("Crear Nuevo");
 		btnCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				crearNuevoPersonaje(frame);
+				if(btnSeleccionar.isEnabled()){
+					crearNuevoPersonaje(frame);
+				}
 			}
 		});
 		
@@ -205,6 +206,8 @@ public class IniciarJuego extends JPanel {
 		
 		if(ctrl.getJugador1() != null && ctrl.getJugador2() != null){
 			btnSeleccionar.setEnabled(false);
+			btnCrear.setEnabled(false);
+			
 		}
 		
 	}
@@ -212,6 +215,7 @@ public class IniciarJuego extends JPanel {
 	public void continuar (JFrame frame){
 	       
 		PlayerSeleccionado ps = new PlayerSeleccionado(frame);
+		ps.setCtrl(ctrl);
 		((TurnBasedCombat) frame).cambiarPanel(ps, "PlayerSeleccionado");
 		
 	}

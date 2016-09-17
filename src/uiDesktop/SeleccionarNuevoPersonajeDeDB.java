@@ -18,6 +18,7 @@ import entidades.Personaje;
 import juego.ControladorJuego;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -25,8 +26,6 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 	
@@ -156,8 +155,14 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 		if(ctrl.getJugador1() == null){
 			ctrl.setJugador1(p);
 		}else{
-			ctrl.setJugador2(p);
-		}
+			if(p.getIdPersonaje() != ctrl.getJugador1().getIdPersonaje()){
+				ctrl.setJugador2(p);
+				}
+				else{
+					JOptionPane.showMessageDialog(this, "No puede seleccionar el mismo peronaje. Por favor elija otro.", 
+							"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
 		
 		((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
 	}

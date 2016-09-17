@@ -5,12 +5,23 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+
+import entidades.Personaje;
+import juego.ControladorJuego;
+
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PlayerSeleccionado extends JPanel {
 	private JTextField textJugador1;
@@ -25,11 +36,28 @@ public class PlayerSeleccionado extends JPanel {
 	private JTextField textDef2;
 	private JTextField textEva2;
 	private JTextField textPtosTot2;
+	
+	private ControladorJuego ctrl;
+
+	public ControladorJuego getCtrl() {
+		return ctrl;
+	}
+
+	public void setCtrl(ControladorJuego ctrl) {
+		this.ctrl = ctrl;
+	}
 
 	/**
 	 * Create the panel.
 	 */
 	public PlayerSeleccionado(JFrame frame) {
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				MapearJugador1(ctrl.getJugador1());
+				MapearJugador2(ctrl.getJugador2());
+			}
+		});
 		
 		JLabel lblJugador1 = new JLabel("Jugador 1");
 		lblJugador1.setFont(new Font("Dialog", Font.BOLD, 17));
@@ -44,13 +72,13 @@ public class PlayerSeleccionado extends JPanel {
 		separator.setOrientation(SwingConstants.VERTICAL);
 		
 		textJugador1 = new JTextField();
-		textJugador1.setEnabled(false);
+		textJugador1.setFont(new Font("Dialog", Font.BOLD, 13));
 		textJugador1.setEditable(false);
 		textJugador1.setColumns(10);
 		
 		textJugador2 = new JTextField();
+		textJugador2.setFont(new Font("Dialog", Font.BOLD, 13));
 		textJugador2.setEditable(false);
-		textJugador2.setEnabled(false);
 		textJugador2.setColumns(10);
 		
 		JLabel lblVida1 = new JLabel("Vida:");
@@ -75,151 +103,166 @@ public class PlayerSeleccionado extends JPanel {
 		
 		textVida1 = new JTextField();
 		textVida1.setEditable(false);
-		textVida1.setEnabled(false);
 		textVida1.setColumns(10);
 		
 		textEner1 = new JTextField();
-		textEner1.setEnabled(false);
 		textEner1.setEditable(false);
 		textEner1.setColumns(10);
 		
 		textDef1 = new JTextField();
 		textDef1.setEditable(false);
-		textDef1.setEnabled(false);
 		textDef1.setColumns(10);
 		
 		textEva1 = new JTextField();
-		textEva1.setEnabled(false);
 		textEva1.setEditable(false);
 		textEva1.setColumns(10);
 		
 		textPtosTot1 = new JTextField();
-		textPtosTot1.setEnabled(false);
 		textPtosTot1.setEditable(false);
 		textPtosTot1.setColumns(10);
 		
 		textVida2 = new JTextField();
-		textVida2.setEnabled(false);
 		textVida2.setEditable(false);
 		textVida2.setColumns(10);
 		
 		textEner2 = new JTextField();
-		textEner2.setEnabled(false);
 		textEner2.setEditable(false);
 		textEner2.setColumns(10);
 		
 		textDef2 = new JTextField();
-		textDef2.setEnabled(false);
 		textDef2.setEditable(false);
 		textDef2.setColumns(10);
 		
 		textEva2 = new JTextField();
-		textEva2.setEnabled(false);
 		textEva2.setEditable(false);
 		textEva2.setColumns(10);
 		
 		textPtosTot2 = new JTextField();
-		textPtosTot2.setEnabled(false);
 		textPtosTot2.setEditable(false);
 		textPtosTot2.setColumns(10);
 		
 		JButton btnModificar1 = new JButton("Modificar");
+		btnModificar1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				modificarJugador(frame, ctrl.getJugador1());
+			}
+		});
+		btnModificar1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		
 		JButton btnModificar2 = new JButton("Modificar");
+		btnModificar2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				modificarJugador(frame, ctrl.getJugador2());
+
+			}
+		});
 		
 		JButton btnJugar = new JButton("JUGAR");
 		btnJugar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(28)
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(86)
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblJugador1)
-										.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+									.addGap(65)
+									.addComponent(lblJugador1))
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(28)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblVida1)
-										.addComponent(lblEnergia1)
-										.addComponent(lblDefensa1)
-										.addComponent(lblEvasion1)
-										.addComponent(lblPtosTot1))
-									.addGap(38)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(textPtosTot1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textEva1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textDef1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textEner1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textVida1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-							.addGap(18))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnModificar1)
-							.addGap(68)))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addGap(21)
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblVida1)
+												.addComponent(lblEnergia1)
+												.addComponent(lblDefensa1)
+												.addComponent(lblEvasion1))
+											.addGap(66))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(lblPtosTot1)
+											.addPreferredGap(ComponentPlacement.UNRELATED)))
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(textPtosTot1, 0, 0, Short.MAX_VALUE)
+										.addComponent(textEva1, 0, 0, Short.MAX_VALUE)
+										.addComponent(textVida1, 0, 0, Short.MAX_VALUE)
+										.addComponent(textDef1, 0, 0, Short.MAX_VALUE)
+										.addComponent(textEner1, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(68)
+									.addComponent(btnModificar1)))
+							.addPreferredGap(ComponentPlacement.RELATED))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(49)
+							.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblVS)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(10)
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
+							.addGap(12)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 							.addGroup(groupLayout.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblJugador2)
-									.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGap(101))
+									.addGroup(groupLayout.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+										.addComponent(lblJugador2)
+										.addGap(99))
+									.addGroup(groupLayout.createSequentialGroup()
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+											.addComponent(lblVida2)
+											.addComponent(lblEvasion2)
+											.addComponent(lblDefensa2)
+											.addComponent(lblEnergia2)
+											.addComponent(lblPtosTot2))
+										.addGap(30)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+											.addComponent(textVida2, 0, 0, Short.MAX_VALUE)
+											.addComponent(textEner2, 0, 0, Short.MAX_VALUE)
+											.addComponent(textDef2, 0, 0, Short.MAX_VALUE)
+											.addComponent(textEva2, 0, 0, Short.MAX_VALUE)
+											.addComponent(textPtosTot2, GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+										.addGap(55)))
+								.addGap(10))
 							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(18)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblVida2)
-									.addComponent(lblEvasion2)
-									.addComponent(lblDefensa2)
-									.addComponent(lblEnergia2)
-									.addComponent(lblPtosTot2))
-								.addGap(30)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(textPtosTot2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(textEva2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(textDef2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(textEner2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addComponent(textVida2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGap(26)))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnModificar2)
-							.addGap(67))))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(251, Short.MAX_VALUE)
+								.addGap(52)
+								.addComponent(btnModificar2)
+								.addContainerGap()))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(69)
+							.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(199)
 					.addComponent(btnJugar)
-					.addGap(206))
+					.addContainerGap(252, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(26)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblJugador1)
-						.addComponent(lblJugador2)
-						.addComponent(lblVS))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
+							.addComponent(lblJugador2)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(32)
+							.addGap(38)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblVida2)
 								.addComponent(textVida2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textEner2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEnergia2))
+								.addComponent(lblEnergia2)
+								.addComponent(textEner2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(textDef2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -228,45 +271,92 @@ public class PlayerSeleccionado extends JPanel {
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(textEva2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblEvasion2))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addGap(10)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addComponent(lblPtosTot2)
 								.addComponent(textPtosTot2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
-							.addComponent(btnModificar2))
+							.addComponent(btnModificar2)
+							.addGap(18))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(32)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblVida1)
-								.addComponent(textVida1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblEnergia1)
-								.addComponent(textEner1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblDefensa1)
-								.addComponent(textDef1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblEvasion1)
-								.addComponent(textEva1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
+								.addComponent(lblJugador1)
+								.addComponent(lblVS))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textPtosTot1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblPtosTot1))
-							.addGap(18)
-							.addComponent(btnModificar1))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(11)
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 292, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(30)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGap(39)
+											.addComponent(lblVida1)
+											.addGap(18)
+											.addComponent(lblEnergia1)
+											.addGap(18)
+											.addComponent(lblDefensa1)
+											.addGap(18)
+											.addComponent(lblEvasion1))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGap(31)
+											.addComponent(textVida1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addComponent(textEner1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addComponent(textDef1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addComponent(textEva1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+												.addComponent(textPtosTot1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(lblPtosTot1))))
+									.addGap(18)
+									.addComponent(btnModificar1))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(12)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(separator, GroupLayout.PREFERRED_SIZE, 259, Short.MAX_VALUE)
+										.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+							.addPreferredGap(ComponentPlacement.UNRELATED)))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnJugar)
-					.addContainerGap())
+					.addGap(38))
 		);
 		setLayout(groupLayout);
+		
+		
 
 	}
+	
+	
+	public void MapearJugador1(Personaje p){
+		
+		textJugador1.setText(p.getNombre());
+		textVida1.setText(String.valueOf(p.getVida()));
+		textDef1.setText(String.valueOf(p.getDefensa()));
+		textEner1.setText(String.valueOf(p.getEnergia()));
+		textEva1.setText(String.valueOf(p.getEvasion()));
+		textPtosTot1.setText(String.valueOf(p.getPuntosTotales()));
+		
+	}
+	
+	public void MapearJugador2(Personaje p){
+		
+		textJugador2.setText(p.getNombre());
+		textVida2.setText(String.valueOf(p.getVida()));
+		textDef2.setText(String.valueOf(p.getDefensa()));
+		textEner2.setText(String.valueOf(p.getEnergia()));
+		textEva2.setText(String.valueOf(p.getEvasion()));
+		textPtosTot2.setText(String.valueOf(p.getPuntosTotales()));
+		
+	}
+	
+	public void modificarJugador(JFrame frame, Personaje p){
+		
+		ModificarJugador mj = new ModificarJugador(frame,p);
+		mj.setCtrl(ctrl);	
+		
+		((TurnBasedCombat) frame).cambiarPanel(mj, "ModificarJugador");
+		
+	}
+	
 }

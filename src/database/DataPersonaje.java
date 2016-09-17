@@ -23,7 +23,9 @@ public class DataPersonaje {
 		PreparedStatement stmt = null;
 		
 		try {
-			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("insert into personajes(idPersonaje, nombre, vida, energia, defensa, evasion, puntosTotales)"+"values(?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("insert into personajes(idPersonaje, "
+					+ "nombre, vida, energia, defensa, evasion, puntosTotales) "
+					+ "values(?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, p.getIdPersonaje());
 			stmt.setString(2, p.getNombre());
 			stmt.setInt(3, p.getVida());
@@ -47,6 +49,36 @@ public class DataPersonaje {
 	
 	public void update(Personaje p){
 		
+		PreparedStatement stmt=null;
+		
+		try {
+			stmt= FactoryConexion.getInstancia().getConn().prepareStatement("UPDATE personajes "
+					+ "SET vida=?, energia=?, defensa=?, evasion=?, puntosTotales=? "
+					+ "WHERE idPersonaje=?");
+			
+			stmt.setInt(1, p.getVida());
+			stmt.setInt(2, p.getEnergia());
+			stmt.setInt(3, p.getDefensa());
+			stmt.setInt(4, p.getEvasion());
+			stmt.setInt(5, p.getPuntosTotales());
+			
+			stmt.setInt(6, p.getIdPersonaje());
+			
+			stmt.execute();
+						
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(stmt!=null)stmt.close();
+				FactoryConexion.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			
+		}
+	}
 		
 	}
 	

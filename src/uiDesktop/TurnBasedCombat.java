@@ -41,6 +41,7 @@ public class TurnBasedCombat extends JFrame {
 	}
 
 	public TurnBasedCombat() {
+		setTitle("Turn Based Combat");
 		
 		ImageIcon img = new ImageIcon("img/barbaro.png");
 		setIconImage(img.getImage());
