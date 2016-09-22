@@ -87,7 +87,7 @@ public class IniciarJuego extends JPanel {
 		btnCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(btnSeleccionar.isEnabled()){
+				if(btnCrear.isEnabled()){
 					crearNuevoPersonaje(frame);
 				}
 			}

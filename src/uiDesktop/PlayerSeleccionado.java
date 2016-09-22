@@ -164,6 +164,12 @@ public class PlayerSeleccionado extends JPanel {
 		});
 		
 		JButton btnJugar = new JButton("JUGAR");
+		btnJugar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				sorteo(frame);
+			}
+		});
 		btnJugar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -356,6 +362,16 @@ public class PlayerSeleccionado extends JPanel {
 		mj.setCtrl(ctrl);	
 		
 		((TurnBasedCombat) frame).cambiarPanel(mj, "ModificarJugador");
+		
+	}
+	
+	private void sorteo(JFrame frame){
+		
+		SorteoTurno sorteo = new SorteoTurno(frame);
+		
+		sorteo.setCtrl(ctrl);
+		
+		((TurnBasedCombat) frame).cambiarPanel(sorteo, "Sorteo");
 		
 	}
 	

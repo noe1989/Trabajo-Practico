@@ -19,6 +19,10 @@ public class ModificarJugador extends JPanel {
 	private ControladorJuego ctrl;
 	private JTextField textNombre;
 	private JTextField textPtsTotales;
+	private JTextField txtVida;
+	private JTextField txtEnergia;
+	private JTextField txtEvasion;
+	private JTextField txtDefensa;
 	
 	
 	public ControladorJuego getCtrl() {
@@ -51,20 +55,48 @@ public class ModificarJugador extends JPanel {
 		
 		textPtsTotales = new JTextField();
 		textPtsTotales.setColumns(10);
+		
+		txtVida = new JTextField();
+		txtVida.setColumns(10);
+		
+		txtEnergia = new JTextField();
+		txtEnergia.setColumns(10);
+		
+		txtEvasion = new JTextField();
+		txtEvasion.setColumns(10);
+		
+		txtDefensa = new JTextField();
+		txtDefensa.setColumns(10);
+		
+		JLabel lblVida = new JLabel("Vida:");
+		
+		JLabel lblEnergia = new JLabel("Energ\u00EDa:");
+		
+		JLabel lblEvasion = new JLabel("Evasion:");
+		
+		JLabel lblDefensa = new JLabel("Defensa:");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(51)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblModificarJugador)
 						.addComponent(lblPuntosTotales)
-						.addComponent(lblModificarJugador))
+						.addComponent(lblVida)
+						.addComponent(lblEnergia)
+						.addComponent(lblEvasion)
+						.addComponent(lblDefensa))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtDefensa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textPtsTotales, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnAplicar)
 						.addComponent(textNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textPtsTotales, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(218, Short.MAX_VALUE))
+						.addComponent(txtEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(214, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -73,11 +105,27 @@ public class ModificarJugador extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblModificarJugador)
 						.addComponent(textNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblVida)
+						.addComponent(txtVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblEnergia))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblEvasion))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtDefensa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblDefensa))
+					.addPreferredGap(ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPuntosTotales)
 						.addComponent(textPtsTotales, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(101)
+					.addGap(49)
 					.addComponent(btnAplicar)
 					.addContainerGap())
 		);
@@ -99,21 +147,21 @@ public class ModificarJugador extends JPanel {
 	public void MapearJugadorAFormulario(Personaje p){
 		
 		textNombre.setText(p.getNombre());
-		/*textVida.setText(String.valueOf(p.getVida()));
-		textDef.setText(String.valueOf(p.getDefensa()));
-		textEner.setText(String.valueOf(p.getEnergia()));
-		textEva.setText(String.valueOf(p.getEvasion()));*/
+		txtVida.setText(String.valueOf(p.getVida()));
+		txtDefensa.setText(String.valueOf(p.getDefensa()));
+		txtEnergia.setText(String.valueOf(p.getEnergia()));
+		txtEvasion.setText(String.valueOf(p.getEvasion()));
 		textPtsTotales.setText(String.valueOf(p.getPuntosTotales()));
 		
 	}
 	
 	public Personaje MapearJugadorDeFormulario(Personaje p){
 		p.setPuntosTotales(Integer.parseInt(textPtsTotales.getText()));
-		/*p.setDefensa(Integer.parseInt(textDefensa.getText()));
-		p.setEnergia(Integer.parseInt(textEnergia.getText()));
-		p.setEvasion(Integer.parseInt(textEvasion.getText()));
-		p.setVida(Integer.parseInt(textVida.getText()));
-		*/
+		p.setDefensa(Integer.parseInt(txtDefensa.getText()));
+		p.setEnergia(Integer.parseInt(txtEnergia.getText()));
+		p.setEvasion(Integer.parseInt(txtEvasion.getText()));
+		p.setVida(Integer.parseInt(txtVida.getText()));
+		
 		
 		return p;
 	}

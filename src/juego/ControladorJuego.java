@@ -9,8 +9,20 @@ public class ControladorJuego {
 	Personaje Jugador1;
 	Personaje Jugador2; 
 	
+	Boolean Turno;
 	
 	
+	
+	public Boolean getTurno() {
+		return Turno;
+	}
+
+
+	public void setTurno(Boolean turno) {
+		Turno = turno;
+	}
+
+
 	public Personaje getJugador1() {
 		return Jugador1;
 	}
