@@ -24,6 +24,18 @@ import java.awt.event.ComponentEvent;
 
 public class Play extends JPanel {
 
+	private TurnBasedCombat frame;
+		
+	public TurnBasedCombat getFrame() {
+		return frame;
+	}
+
+
+
+	public void setFrame(TurnBasedCombat frame) {
+		this.frame = frame;
+	}
+
 	private ControladorJuego ctrl;
 	private JTextField textJugador1;
 	private JTextField textJugador2;
@@ -61,7 +73,9 @@ public class Play extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Play(JFrame frame) {
+	public Play(ControladorJuego ctrl) {
+		this.ctrl = ctrl;
+		
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentShown(ComponentEvent e) {
@@ -310,11 +324,23 @@ public class Play extends JPanel {
 		panelJugador1.setLayout(gl_panelJugador1);
 		setLayout(groupLayout);
 		
-		Boolean estado = false;
-		setEnablePanel1(estado);
-		panelJugador2.setBackground(new Color(154, 220, 242));
+
+		int turno = ctrl.getTurno();
+		System.out.println(turno);
 		
-		System.out.println(ctrl.getTurno());
+		Boolean estado = true;
+		
+		switch (turno) {
+	        case 1:  
+	        	setEnablePanel1(estado);
+	        	setEnablePanel2(!estado);
+	            break;
+	        case 2:
+	        	setEnablePanel1(!estado);
+	        	setEnablePanel2(estado);
+				
+	            break;
+		}
 		
 	}
 	
@@ -348,6 +374,9 @@ public class Play extends JPanel {
 	}
 	
 	private void setEnablePanel1(Boolean estado){
+		if(estado){
+			panelJugador1.setBackground(new Color(154, 220, 242));
+		}
 		
 		btnAtacarJugador1.setEnabled(estado);
 		btnDefenderJugador1.setEnabled(estado);
@@ -363,6 +392,10 @@ public class Play extends JPanel {
 	}
 	
 	private void setEnablePanel2(Boolean estado){
+		
+		if (estado){
+			panelJugador2.setBackground(new Color(154, 220, 242));
+		}
 		
 		btnAtacarJugador2.setEnabled(estado);
 		btnDefenderJugador2.setEnabled(estado);

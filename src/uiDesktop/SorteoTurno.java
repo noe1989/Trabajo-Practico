@@ -16,10 +16,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SorteoTurno extends JPanel {
 	
-	ControladorJuego ctrl;
+	private TurnBasedCombat frame;
+	
+	private ControladorJuego ctrl;
 	private JTextField textNroJugador1;
 	private JTextField textNroJugador2;
 	
@@ -38,44 +42,54 @@ public class SorteoTurno extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public SorteoTurno(JFrame frame) {
+	public SorteoTurno() {
+		
+
 		
 		JLabel lblSorteo = new JLabel("Sorteo de turno");
 		lblSorteo.setFont(new Font("Arial", Font.PLAIN, 18));
 		
 		JButton btnSortear = new JButton("Sortear");
-		btnSortear.setFont(new Font("Arial", Font.BOLD, 18));
-		btnSortear.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		btnSortear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				
 				Boolean sale = true;
 				
 				int op1 = Integer.parseInt(textNroJugador1.getText());
 				int op2 = Integer.parseInt(textNroJugador2.getText());
 				
-				 
+				System.out.println("Numero elegido A: "+op1);
+				System.out.println("Numero elegido B: "+op2);
+				
+				Random rand = new Random();
+				int aleatorio;
 				
 				do{
-				Random rand = new Random();
-				int aleatorio = rand.nextInt(5); 
-				System.out.println(aleatorio);	
-				 if(op1 == aleatorio){
-						ctrl.setTurno(true);
+				
+					aleatorio = rand.nextInt(5)+1; 
+					System.out.println("Numero aleatorio: "+aleatorio);	
+					
+					if(op1 == aleatorio){
+						int a = 1;	
+						ctrl.setTurno(a);
 						sale = false;
-						System.out.println("aca1");
+						System.out.println("Gano el jugador 1");
 					}
-				 else if(op2 == aleatorio){
-							ctrl.setTurno(true);
-						System.out.println("aca2");
+					 else if(op2 == aleatorio){
+						int b = 2;
+						ctrl.setTurno(b);
+						System.out.println("Gano el jugador 2");
 						sale = false;
 						}
-				
+					
 				}while(sale);
-				System.out.println("salio");
-				/*play(frame);*/
+				
+				System.out.println("Comienza partida");
+				
+				play();
 			}
 		});
+		btnSortear.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		textNroJugador1 = new JTextField();
 		textNroJugador1.setColumns(10);
@@ -137,13 +151,26 @@ public class SorteoTurno extends JPanel {
 
 	
 	
-private void play(JFrame frame){
+	public TurnBasedCombat getFrame() {
+		return frame;
+	}
+
+
+
+	public void setFrame(TurnBasedCombat frame) {
+		this.frame = frame;
+	}
+
+
+
+	private void play(){
 		
-		Play play = new Play(frame);
+		Play p = new Play(ctrl);
+		//p.setCtrl(ctrl);
+		p.setFrame((TurnBasedCombat) frame);
 		
-		play.setCtrl(ctrl);
 		
-		((TurnBasedCombat) frame).cambiarPanel(play, "Play");
+		((TurnBasedCombat) frame).cambiarPanel(p, "Play");
 		
 	}
 }

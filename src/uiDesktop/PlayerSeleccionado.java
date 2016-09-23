@@ -376,8 +376,9 @@ public class PlayerSeleccionado extends JPanel {
 	
 	private void sorteo(JFrame frame){
 		
-		SorteoTurno sorteo = new SorteoTurno(frame);
+		SorteoTurno sorteo = new SorteoTurno();
 		
+		sorteo.setFrame((TurnBasedCombat) frame);
 		sorteo.setCtrl(ctrl);
 		
 		((TurnBasedCombat) frame).cambiarPanel(sorteo, "Sorteo");

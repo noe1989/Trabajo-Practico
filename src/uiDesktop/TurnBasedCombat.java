@@ -44,8 +44,7 @@ public class TurnBasedCombat extends JFrame {
 	}
 
 	public TurnBasedCombat() {
-		
-		
+		setResizable(false);
 				
 		
 		setIconImage(new ImageIcon("img/barbaro.png").getImage());
@@ -54,12 +53,11 @@ public class TurnBasedCombat extends JFrame {
 		  JLabel fondo= new JLabel(); 
 		  fondo.setIcon(uno); getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER); 
 		  fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
-		  setResizable(false);
 		/*setLocationRelativeTo(null);*/
 		
 		 setTitle("Turn Based Combat");
 		
-		setSize(530,500); 
+		setSize(682,602); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		contentPane = new JPanel();
