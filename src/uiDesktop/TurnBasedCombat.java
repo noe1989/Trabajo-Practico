@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import juego.ControladorJuego;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 
 public class TurnBasedCombat extends JFrame {
 
@@ -54,8 +55,10 @@ public class TurnBasedCombat extends JFrame {
 		  fondo.setIcon(uno); getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER); 
 		  fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
 		  setResizable(false);
-		/* setLocationRelativeTo(null);*/
+		/*setLocationRelativeTo(null);*/
+		
 		 setTitle("Turn Based Combat");
+		
 		setSize(530,500); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -66,6 +69,7 @@ public class TurnBasedCombat extends JFrame {
 		contentPane.setLayout(cl);
 		
 		Panel1 p1 = new Panel1(this);
+		p1.setBackground(new Color(102, 153, 204));
 		
 		p1.setCtrl(ctrl);
 		

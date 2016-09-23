@@ -47,7 +47,7 @@ public class IniciarJuego extends JPanel {
 				actualizar();
 			}
 		});
-		setBackground(new Color(153, 153, 153));
+		setBackground(new Color(102, 153, 204));
 		
 		JLabel lblTitulo = new JLabel("Seleccionar Personaje");
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 17));

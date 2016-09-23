@@ -22,6 +22,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 public class PlayerSeleccionado extends JPanel {
 	private JTextField textJugador1;
@@ -60,13 +61,13 @@ public class PlayerSeleccionado extends JPanel {
 		});
 		
 		JLabel lblJugador1 = new JLabel("Jugador 1");
-		lblJugador1.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblJugador1.setFont(new Font("Arial", Font.BOLD, 17));
 		
 		JLabel lblJugador2 = new JLabel("Jugador 2");
 		lblJugador2.setFont(new Font("Dialog", Font.BOLD, 17));
 		
 		JLabel lblVS = new JLabel("VS");
-		lblVS.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblVS.setFont(new Font("Arial", Font.BOLD, 17));
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
@@ -82,24 +83,35 @@ public class PlayerSeleccionado extends JPanel {
 		textJugador2.setColumns(10);
 		
 		JLabel lblVida1 = new JLabel("Vida:");
+		lblVida1.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblEnergia1 = new JLabel("Energ\u00EDa:");
+		lblEnergia1.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblDefensa1 = new JLabel("Defensa:");
+		lblDefensa1.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblEvasion1 = new JLabel("Evasi\u00F3n:");
+		lblEvasion1.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblPtosTot1 = new JLabel("Puntos Totales:");
+		lblPtosTot1.setBackground(new Color(102, 153, 204));
+		lblPtosTot1.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblVida2 = new JLabel("Vida:");
+		lblVida2.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblEnergia2 = new JLabel("Energ\u00EDa:");
+		lblEnergia2.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblDefensa2 = new JLabel("Defensa:");
+		lblDefensa2.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblEvasion2 = new JLabel("Evasi\u00F3n:");
+		lblEvasion2.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblPtosTot2 = new JLabel("Puntos Totales:");
+		lblPtosTot2.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		textVida1 = new JTextField();
 		textVida1.setEditable(false);
@@ -142,6 +154,7 @@ public class PlayerSeleccionado extends JPanel {
 		textPtosTot2.setColumns(10);
 		
 		JButton btnModificar1 = new JButton("Modificar");
+		btnModificar1.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnModificar1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -155,6 +168,7 @@ public class PlayerSeleccionado extends JPanel {
 		});
 		
 		JButton btnModificar2 = new JButton("Modificar");
+		btnModificar2.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnModificar2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -170,10 +184,10 @@ public class PlayerSeleccionado extends JPanel {
 				sorteo(frame);
 			}
 		});
-		btnJugar.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnJugar.setFont(new Font("Arial", Font.BOLD, 15));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -184,17 +198,13 @@ public class PlayerSeleccionado extends JPanel {
 									.addComponent(lblJugador1))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(21)
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblVida1)
-												.addComponent(lblEnergia1)
-												.addComponent(lblDefensa1)
-												.addComponent(lblEvasion1))
-											.addGap(66))
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(lblPtosTot1)
-											.addPreferredGap(ComponentPlacement.UNRELATED)))
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblVida1)
+										.addComponent(lblEnergia1)
+										.addComponent(lblDefensa1)
+										.addComponent(lblEvasion1)
+										.addComponent(lblPtosTot1))
+									.addGap(23)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 										.addComponent(textPtosTot1, 0, 0, Short.MAX_VALUE)
 										.addComponent(textEva1, 0, 0, Short.MAX_VALUE)
@@ -217,10 +227,10 @@ public class PlayerSeleccionado extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 							.addGroup(groupLayout.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 									.addGroup(groupLayout.createSequentialGroup()
-										.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
 										.addComponent(lblJugador2)
 										.addGap(99))
 									.addGroup(groupLayout.createSequentialGroup()
@@ -247,10 +257,10 @@ public class PlayerSeleccionado extends JPanel {
 							.addGap(69)
 							.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(199)
 					.addComponent(btnJugar)
-					.addContainerGap(252, Short.MAX_VALUE))
+					.addContainerGap(183, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -320,9 +330,8 @@ public class PlayerSeleccionado extends JPanel {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(12)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(separator, GroupLayout.PREFERRED_SIZE, 259, Short.MAX_VALUE)
-										.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-							.addPreferredGap(ComponentPlacement.UNRELATED)))
+										.addComponent(separator, GroupLayout.PREFERRED_SIZE, 273, Short.MAX_VALUE)
+										.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnJugar)
 					.addGap(38))

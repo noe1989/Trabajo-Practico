@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 public class CrearNuevoPersonaje extends JPanel {
 	private JTextField textID;
@@ -44,6 +45,7 @@ public class CrearNuevoPersonaje extends JPanel {
 	 * Create the panel.
 	 */
 	public CrearNuevoPersonaje(JFrame frame) {
+		setBackground(new Color(102, 153, 204));
 		
 		JLabel lblNuevoPersonaje = new JLabel("Nuevo Personaje");
 		lblNuevoPersonaje.setFont(new Font("Dialog", Font.BOLD, 17));

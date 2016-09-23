@@ -38,7 +38,7 @@ public class Panel1 extends JPanel {
 	
 	public Panel1(JFrame frame) {
 				
-		this.setBackground(new Color(153, 153, 153));
+		this.setBackground(new Color(102, 153, 204));
 		
 		JLabel lblTurnBasedCombat = new JLabel("Turn Based Combat");
 		lblTurnBasedCombat.setFont(new Font("Stencil", Font.PLAIN, 20));
@@ -63,7 +63,7 @@ public class Panel1 extends JPanel {
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -73,10 +73,10 @@ public class Panel1 extends JPanel {
 							.addContainerGap()
 							.addComponent(separator, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)))
 					.addContainerGap())
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(270, Short.MAX_VALUE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(307, Short.MAX_VALUE)
 					.addComponent(btnInicarJuego)
-					.addGap(67))
+					.addGap(30))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -85,9 +85,9 @@ public class Panel1 extends JPanel {
 					.addComponent(lblTurnBasedCombat)
 					.addGap(8)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(111)
+					.addGap(134)
 					.addComponent(btnInicarJuego, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-					.addGap(99))
+					.addGap(80))
 		);
 		setLayout(groupLayout);
 		
