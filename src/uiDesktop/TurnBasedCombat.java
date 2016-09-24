@@ -54,7 +54,6 @@ public class TurnBasedCombat extends JFrame {
 		  JLabel fondo= new JLabel(); 
 		  fondo.setIcon(uno); getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER); 
 		  fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
-		/*setLocationRelativeTo(null);*/
 		
 		 setTitle("Turn Based Combat");
 		
