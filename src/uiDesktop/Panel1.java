@@ -56,7 +56,7 @@ public class Panel1 extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnInicarJuego.setFont(new Font("Arial", Font.PLAIN, 15));
+		btnInicarJuego.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(Color.BLACK);
@@ -68,25 +68,25 @@ public class Panel1 extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 556, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(280)
-							.addComponent(btnInicarJuego))
+							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 585, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(231)
-							.addComponent(lblTurnBasedCombat)))
+							.addComponent(lblTurnBasedCombat))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(214)
+							.addComponent(btnInicarJuego)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblTurnBasedCombat)
+					.addComponent(lblTurnBasedCombat, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGap(11)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(436)
+					.addGap(356)
 					.addComponent(btnInicarJuego, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-					.addGap(55))
+					.addGap(60))
 		);
 		setLayout(groupLayout);
 		

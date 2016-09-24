@@ -74,6 +74,7 @@ public class Play extends JPanel {
 	 * Create the panel.
 	 */
 	public Play() {
+		setBackground(new Color(102, 153, 204));
 		this.ctrl = ctrl;
 		
 		addComponentListener(new ComponentAdapter() {
@@ -87,7 +88,7 @@ public class Play extends JPanel {
 		});
 		
 		JLabel lblTurnBasedCombat = new JLabel("Turn Based Combat");
-		lblTurnBasedCombat.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblTurnBasedCombat.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		JSeparator separatorTitulo = new JSeparator();
 		
@@ -118,12 +119,12 @@ public class Play extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-									.addComponent(panelJugador1, GroupLayout.PREFERRED_SIZE, 295, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-									.addComponent(panelJugador2, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE))
-								.addComponent(separatorTitulo, GroupLayout.PREFERRED_SIZE, 510, Short.MAX_VALUE)))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(panelJugador1, GroupLayout.PREFERRED_SIZE, 266, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(panelJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(separatorTitulo, GroupLayout.PREFERRED_SIZE, 609, Short.MAX_VALUE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(245)
 							.addComponent(lblTurnBasedCombat, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)))
@@ -138,12 +139,13 @@ public class Play extends JPanel {
 					.addComponent(separatorTitulo, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panelJugador2, GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-						.addComponent(panelJugador1, GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
+						.addComponent(panelJugador2, GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+						.addComponent(panelJugador1, GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
 		textJugador2 = new JTextField();
+		textJugador2.setFont(new Font("Arial", Font.PLAIN, 11));
 		textJugador2.setHorizontalAlignment(SwingConstants.CENTER);
 		textJugador2.setEditable(false);
 		textJugador2.setColumns(10);
@@ -153,20 +155,26 @@ public class Play extends JPanel {
 		panel2.setOpaque(false);
 		
 		textVidaJugador2 = new JTextField();
+		textVidaJugador2.setFont(new Font("Arial", Font.PLAIN, 11));
 		textVidaJugador2.setEditable(false);
 		textVidaJugador2.setColumns(10);
 		
 		textEnergiaJugador2 = new JTextField();
+		textEnergiaJugador2.setFont(new Font("Arial", Font.PLAIN, 11));
 		textEnergiaJugador2.setEditable(false);
 		textEnergiaJugador2.setColumns(10);
 		
 		lblVidaJugador2 = new JLabel("Vida:");
+		lblVidaJugador2.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		lblEnergiaJugador2 = new JLabel("Energ\u00EDa:");
+		lblEnergiaJugador2.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		btnAtacarJugador2 = new JButton("Atacar");
+		btnAtacarJugador2.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		btnDefenderJugador2 = new JButton("Defender");
+		btnDefenderJugador2.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		textEstadoTurno2 = new JTextField();
 		textEstadoTurno2.setBackground(Color.WHITE);
@@ -176,39 +184,37 @@ public class Play extends JPanel {
 		
 		GroupLayout gl_panelJugador2 = new GroupLayout(panelJugador2);
 		gl_panelJugador2.setHorizontalGroup(
-			gl_panelJugador2.createParallelGroup(Alignment.TRAILING)
+			gl_panelJugador2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelJugador2.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panelJugador2.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_panelJugador2.createSequentialGroup()
+					.addGroup(gl_panelJugador2.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panelJugador2.createSequentialGroup()
 							.addGroup(gl_panelJugador2.createParallelGroup(Alignment.LEADING)
 								.addComponent(textVidaJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblVidaJugador2))
-							.addPreferredGap(ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-							.addGroup(gl_panelJugador2.createParallelGroup(Alignment.LEADING, false)
+							.addPreferredGap(ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+							.addGroup(gl_panelJugador2.createParallelGroup(Alignment.TRAILING, false)
 								.addGroup(gl_panelJugador2.createSequentialGroup()
 									.addComponent(lblEnergiaJugador2)
 									.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-								.addGroup(Alignment.TRAILING, gl_panelJugador2.createSequentialGroup()
+								.addGroup(gl_panelJugador2.createSequentialGroup()
 									.addComponent(textEnergiaJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 									.addContainerGap())))
 						.addGroup(gl_panelJugador2.createSequentialGroup()
 							.addComponent(btnAtacarJugador2)
-							.addPreferredGap(ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
 							.addComponent(btnDefenderJugador2)
 							.addContainerGap())))
-				.addGroup(Alignment.LEADING, gl_panelJugador2.createSequentialGroup()
-					.addGap(108)
-					.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(112, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_panelJugador2.createSequentialGroup()
-					.addGap(118)
-					.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(122, Short.MAX_VALUE))
 				.addGroup(gl_panelJugador2.createSequentialGroup()
-					.addContainerGap(66, Short.MAX_VALUE)
+					.addContainerGap(30, Short.MAX_VALUE)
 					.addComponent(textEstadoTurno2, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE)
 					.addGap(49))
+				.addGroup(gl_panelJugador2.createSequentialGroup()
+					.addGap(108)
+					.addGroup(gl_panelJugador2.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(panel2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(textJugador2, Alignment.LEADING))
+					.addContainerGap(76, Short.MAX_VALUE))
 		);
 		gl_panelJugador2.setVerticalGroup(
 			gl_panelJugador2.createParallelGroup(Alignment.LEADING)
@@ -227,7 +233,7 @@ public class Play extends JPanel {
 						.addComponent(textEnergiaJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(48)
 					.addComponent(textEstadoTurno2, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
 					.addGroup(gl_panelJugador2.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAtacarJugador2)
 						.addComponent(btnDefenderJugador2))
@@ -236,6 +242,7 @@ public class Play extends JPanel {
 		panelJugador2.setLayout(gl_panelJugador2);
 		
 		textJugador1 = new JTextField();
+		textJugador1.setFont(new Font("Arial", Font.PLAIN, 11));
 		textJugador1.setHorizontalAlignment(SwingConstants.CENTER);
 		textJugador1.setEditable(false);
 		textJugador1.setColumns(10);
@@ -245,20 +252,26 @@ public class Play extends JPanel {
 		panel1.setOpaque(false);
 		
 		textVidaJugador1 = new JTextField();
+		textVidaJugador1.setFont(new Font("Arial", Font.PLAIN, 11));
 		textVidaJugador1.setEditable(false);
 		textVidaJugador1.setColumns(10);
 		
 		textEnergiaJugador1 = new JTextField();
+		textEnergiaJugador1.setFont(new Font("Arial", Font.PLAIN, 11));
 		textEnergiaJugador1.setEditable(false);
 		textEnergiaJugador1.setColumns(10);
 		
 		lblVidaJugador1 = new JLabel("Vida:");
+		lblVidaJugador1.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		lblEnergiaJugador1 = new JLabel("Energ\u00EDa:");
+		lblEnergiaJugador1.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		btnAtacarJugador1 = new JButton("Atacar");
+		btnAtacarJugador1.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		btnDefenderJugador1 = new JButton("Defender");
+		btnDefenderJugador1.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		textEstadoTurno1 = new JTextField();
 		textEstadoTurno1.setBackground(Color.WHITE);
@@ -269,34 +282,33 @@ public class Play extends JPanel {
 		
 		GroupLayout gl_panelJugador1 = new GroupLayout(panelJugador1);
 		gl_panelJugador1.setHorizontalGroup(
-			gl_panelJugador1.createParallelGroup(Alignment.LEADING)
+			gl_panelJugador1.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panelJugador1.createSequentialGroup()
-					.addGroup(gl_panelJugador1.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_panelJugador1.createSequentialGroup()
-							.addContainerGap()
+					.addContainerGap()
+					.addGroup(gl_panelJugador1.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panelJugador1.createSequentialGroup()
 							.addGroup(gl_panelJugador1.createParallelGroup(Alignment.LEADING)
 								.addComponent(textVidaJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblVidaJugador1))
-							.addPreferredGap(ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
 							.addGroup(gl_panelJugador1.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblEnergiaJugador1)
 								.addComponent(textEnergiaJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_panelJugador1.createSequentialGroup()
-							.addContainerGap()
 							.addComponent(btnAtacarJugador1)
-							.addPreferredGap(ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
 							.addComponent(btnDefenderJugador1)))
 					.addContainerGap())
-				.addGroup(Alignment.TRAILING, gl_panelJugador1.createSequentialGroup()
-					.addContainerGap(107, Short.MAX_VALUE)
-					.addGroup(gl_panelJugador1.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel1, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(100))
 				.addGroup(gl_panelJugador1.createSequentialGroup()
 					.addGap(47)
 					.addComponent(textEstadoTurno1, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(55, Short.MAX_VALUE))
+				.addGroup(gl_panelJugador1.createSequentialGroup()
+					.addContainerGap(107, Short.MAX_VALUE)
+					.addGroup(gl_panelJugador1.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(panel1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(textJugador1, Alignment.LEADING))
+					.addGap(100))
 		);
 		gl_panelJugador1.setVerticalGroup(
 			gl_panelJugador1.createParallelGroup(Alignment.LEADING)
@@ -315,7 +327,7 @@ public class Play extends JPanel {
 						.addComponent(textEnergiaJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(44)
 					.addComponent(textEstadoTurno1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
 					.addGroup(gl_panelJugador1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAtacarJugador1)
 						.addComponent(btnDefenderJugador1))

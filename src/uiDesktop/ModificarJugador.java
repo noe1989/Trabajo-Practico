@@ -13,6 +13,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class ModificarJugador extends JPanel {
 
@@ -36,14 +38,17 @@ public class ModificarJugador extends JPanel {
 
 
 	public ModificarJugador(JFrame frame, Personaje p) {
+		setBackground(new Color(102, 153, 204));
 		
 		JLabel lblModificarJugador = new JLabel("Modificar Jugador:");
+		lblModificarJugador.setFont(new Font("Arial", Font.BOLD, 15));
 		
 		textNombre = new JTextField();
 		textNombre.setEditable(false);
 		textNombre.setColumns(10);
 		
 		JButton btnAplicar = new JButton("Aplicar");
+		btnAplicar.setFont(new Font("Arial", Font.BOLD, 18));
 		btnAplicar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -52,8 +57,11 @@ public class ModificarJugador extends JPanel {
 		});
 		
 		JLabel lblPuntosTotales = new JLabel("Puntos Totales:");
+		lblPuntosTotales.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		textPtsTotales = new JTextField();
+		textPtsTotales.setEnabled(false);
+		textPtsTotales.setEditable(false);
 		textPtsTotales.setColumns(10);
 		
 		txtVida = new JTextField();
@@ -69,12 +77,16 @@ public class ModificarJugador extends JPanel {
 		txtDefensa.setColumns(10);
 		
 		JLabel lblVida = new JLabel("Vida:");
+		lblVida.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblEnergia = new JLabel("Energ\u00EDa:");
+		lblEnergia.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblEvasion = new JLabel("Evasion:");
+		lblEvasion.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblDefensa = new JLabel("Defensa:");
+		lblDefensa.setFont(new Font("Arial", Font.PLAIN, 15));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

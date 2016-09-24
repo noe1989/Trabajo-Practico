@@ -52,6 +52,7 @@ public class PlayerSeleccionado extends JPanel {
 	 * Create the panel.
 	 */
 	public PlayerSeleccionado(JFrame frame) {
+		setBackground(new Color(102, 153, 204));
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentShown(ComponentEvent e) {
@@ -61,24 +62,24 @@ public class PlayerSeleccionado extends JPanel {
 		});
 		
 		JLabel lblJugador1 = new JLabel("Jugador 1");
-		lblJugador1.setFont(new Font("Arial", Font.BOLD, 17));
+		lblJugador1.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		JLabel lblJugador2 = new JLabel("Jugador 2");
-		lblJugador2.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblJugador2.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		JLabel lblVS = new JLabel("VS");
-		lblVS.setFont(new Font("Arial", Font.BOLD, 17));
+		lblVS.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		
 		textJugador1 = new JTextField();
-		textJugador1.setFont(new Font("Dialog", Font.BOLD, 13));
+		textJugador1.setFont(new Font("Arial", Font.BOLD, 13));
 		textJugador1.setEditable(false);
 		textJugador1.setColumns(10);
 		
 		textJugador2 = new JTextField();
-		textJugador2.setFont(new Font("Dialog", Font.BOLD, 13));
+		textJugador2.setFont(new Font("Arial", Font.BOLD, 13));
 		textJugador2.setEditable(false);
 		textJugador2.setColumns(10);
 		
@@ -114,47 +115,57 @@ public class PlayerSeleccionado extends JPanel {
 		lblPtosTot2.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		textVida1 = new JTextField();
+		textVida1.setFont(new Font("Arial", Font.PLAIN, 11));
 		textVida1.setEditable(false);
 		textVida1.setColumns(10);
 		
 		textEner1 = new JTextField();
+		textEner1.setFont(new Font("Arial", Font.PLAIN, 11));
 		textEner1.setEditable(false);
 		textEner1.setColumns(10);
 		
 		textDef1 = new JTextField();
+		textDef1.setFont(new Font("Arial", Font.PLAIN, 11));
 		textDef1.setEditable(false);
 		textDef1.setColumns(10);
 		
 		textEva1 = new JTextField();
+		textEva1.setFont(new Font("Arial", Font.PLAIN, 11));
 		textEva1.setEditable(false);
 		textEva1.setColumns(10);
 		
 		textPtosTot1 = new JTextField();
+		textPtosTot1.setFont(new Font("Arial", Font.PLAIN, 11));
 		textPtosTot1.setEditable(false);
 		textPtosTot1.setColumns(10);
 		
 		textVida2 = new JTextField();
+		textVida2.setFont(new Font("Arial", Font.PLAIN, 11));
 		textVida2.setEditable(false);
 		textVida2.setColumns(10);
 		
 		textEner2 = new JTextField();
+		textEner2.setFont(new Font("Arial", Font.PLAIN, 11));
 		textEner2.setEditable(false);
 		textEner2.setColumns(10);
 		
 		textDef2 = new JTextField();
+		textDef2.setFont(new Font("Arial", Font.PLAIN, 11));
 		textDef2.setEditable(false);
 		textDef2.setColumns(10);
 		
 		textEva2 = new JTextField();
+		textEva2.setFont(new Font("Arial", Font.PLAIN, 11));
 		textEva2.setEditable(false);
 		textEva2.setColumns(10);
 		
 		textPtosTot2 = new JTextField();
+		textPtosTot2.setFont(new Font("Arial", Font.PLAIN, 11));
 		textPtosTot2.setEditable(false);
 		textPtosTot2.setColumns(10);
 		
 		JButton btnModificar1 = new JButton("Modificar");
-		btnModificar1.setFont(new Font("Arial", Font.PLAIN, 15));
+		btnModificar1.setFont(new Font("Arial", Font.BOLD, 18));
 		btnModificar1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -168,7 +179,7 @@ public class PlayerSeleccionado extends JPanel {
 		});
 		
 		JButton btnModificar2 = new JButton("Modificar");
-		btnModificar2.setFont(new Font("Arial", Font.PLAIN, 15));
+		btnModificar2.setFont(new Font("Arial", Font.BOLD, 18));
 		btnModificar2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -184,83 +195,80 @@ public class PlayerSeleccionado extends JPanel {
 				sorteo(frame);
 			}
 		});
-		btnJugar.setFont(new Font("Arial", Font.BOLD, 15));
+		btnJugar.setFont(new Font("Arial", Font.BOLD, 18));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(65)
-									.addComponent(lblJugador1))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(21)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblVida1)
-										.addComponent(lblEnergia1)
-										.addComponent(lblDefensa1)
-										.addComponent(lblEvasion1)
-										.addComponent(lblPtosTot1))
-									.addGap(23)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(textPtosTot1, 0, 0, Short.MAX_VALUE)
-										.addComponent(textEva1, 0, 0, Short.MAX_VALUE)
-										.addComponent(textVida1, 0, 0, Short.MAX_VALUE)
-										.addComponent(textDef1, 0, 0, Short.MAX_VALUE)
-										.addComponent(textEner1, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(68)
-									.addComponent(btnModificar1)))
-							.addPreferredGap(ComponentPlacement.RELATED))
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addContainerGap(43, Short.MAX_VALUE)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addGroup(groupLayout.createSequentialGroup()
+										.addGap(65)
+										.addComponent(lblJugador1))
+									.addGroup(groupLayout.createSequentialGroup()
+										.addGap(21)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+											.addComponent(lblVida1)
+											.addComponent(lblEnergia1)
+											.addComponent(lblDefensa1)
+											.addComponent(lblEvasion1)
+											.addComponent(lblPtosTot1))
+										.addGap(23)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+											.addComponent(textPtosTot1, 0, 0, Short.MAX_VALUE)
+											.addComponent(textEva1, 0, 0, Short.MAX_VALUE)
+											.addComponent(textVida1, 0, 0, Short.MAX_VALUE)
+											.addComponent(textDef1, 0, 0, Short.MAX_VALUE)
+											.addComponent(textEner1, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))))
+								.addPreferredGap(ComponentPlacement.RELATED))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(40)
+								.addComponent(btnModificar1)
+								.addPreferredGap(ComponentPlacement.RELATED)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(49)
 							.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblVS)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
-							.addGap(12)))
+						.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addGroup(groupLayout.createSequentialGroup()
-										.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-										.addComponent(lblJugador2)
-										.addGap(99))
-									.addGroup(groupLayout.createSequentialGroup()
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-											.addComponent(lblVida2)
-											.addComponent(lblEvasion2)
-											.addComponent(lblDefensa2)
-											.addComponent(lblEnergia2)
-											.addComponent(lblPtosTot2))
-										.addGap(30)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-											.addComponent(textVida2, 0, 0, Short.MAX_VALUE)
-											.addComponent(textEner2, 0, 0, Short.MAX_VALUE)
-											.addComponent(textDef2, 0, 0, Short.MAX_VALUE)
-											.addComponent(textEva2, 0, 0, Short.MAX_VALUE)
-											.addComponent(textPtosTot2, GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
-										.addGap(55)))
-								.addGap(10))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(52)
-								.addComponent(btnModificar2)
-								.addContainerGap()))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(69)
-							.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
+							.addPreferredGap(ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblVida2)
+										.addComponent(lblEvasion2)
+										.addComponent(lblDefensa2)
+										.addComponent(lblEnergia2)
+										.addComponent(lblPtosTot2))
+									.addGap(30)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(textVida2, 0, 0, Short.MAX_VALUE)
+										.addComponent(textEner2, 0, 0, Short.MAX_VALUE)
+										.addComponent(textDef2, 0, 0, Short.MAX_VALUE)
+										.addComponent(textEva2, 0, 0, Short.MAX_VALUE)
+										.addComponent(textPtosTot2, GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
+									.addGap(55))
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+										.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblJugador2))
+									.addGap(99)))
+							.addGap(10))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnModificar2)
+							.addGap(62))))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(199)
+					.addGap(231)
 					.addComponent(btnJugar)
-					.addContainerGap(183, Short.MAX_VALUE))
+					.addContainerGap(259, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -291,17 +299,17 @@ public class PlayerSeleccionado extends JPanel {
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addComponent(lblPtosTot2)
 								.addComponent(textPtosTot2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addComponent(btnModificar2)
-							.addGap(18))
+							.addGap(47)
+							.addComponent(btnModificar2))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblJugador1)
 								.addComponent(lblVS))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(30)
+									.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(9)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addGroup(groupLayout.createSequentialGroup()
 											.addGap(39)
@@ -325,16 +333,13 @@ public class PlayerSeleccionado extends JPanel {
 											.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 												.addComponent(textPtosTot1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 												.addComponent(lblPtosTot1))))
-									.addGap(18)
-									.addComponent(btnModificar1))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(12)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(separator, GroupLayout.PREFERRED_SIZE, 273, Short.MAX_VALUE)
-										.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(btnModificar1)
+									.addGap(9))
+								.addComponent(separator, GroupLayout.PREFERRED_SIZE, 313, GroupLayout.PREFERRED_SIZE))))
+					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
 					.addComponent(btnJugar)
-					.addGap(38))
+					.addGap(64))
 		);
 		setLayout(groupLayout);
 		

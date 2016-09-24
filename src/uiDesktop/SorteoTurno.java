@@ -7,6 +7,7 @@ import juego.ControladorJuego;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -18,6 +19,7 @@ import java.util.Random;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class SorteoTurno extends JPanel {
 	
@@ -43,11 +45,12 @@ public class SorteoTurno extends JPanel {
 	 * Create the panel.
 	 */
 	public SorteoTurno() {
+		setBackground(new Color(102, 153, 204));
 		
 
 		
 		JLabel lblSorteo = new JLabel("Sorteo de turno");
-		lblSorteo.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblSorteo.setFont(new Font("Arial", Font.BOLD, 20));
 		
 		JButton btnSortear = new JButton("Sortear");
 		btnSortear.addActionListener(new ActionListener() {
@@ -64,8 +67,7 @@ public class SorteoTurno extends JPanel {
 				Random rand = new Random();
 				int aleatorio;
 				
-				do{
-				
+				do{				
 					aleatorio = rand.nextInt(5)+1; 
 					System.out.println("Numero aleatorio: "+aleatorio);	
 					
@@ -98,10 +100,14 @@ public class SorteoTurno extends JPanel {
 		textNroJugador2.setColumns(10);
 		
 		JLabel lblJugador = new JLabel("Jugador 1:");
+		lblJugador.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblJugador_1 = new JLabel("Jugador 2:");
+		lblJugador_1.setFont(new Font("Arial", Font.PLAIN, 15));
 		
 		JLabel lblElijaUnNumero = new JLabel("Elija un numero de 1 a 5");
+		lblElijaUnNumero.setForeground(Color.RED);
+		lblElijaUnNumero.setFont(new Font("Arial", Font.BOLD, 15));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -110,38 +116,38 @@ public class SorteoTurno extends JPanel {
 					.addComponent(lblJugador)
 					.addGap(65)
 					.addComponent(textNroJugador1, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
 					.addComponent(lblJugador_1)
 					.addGap(62)
 					.addComponent(textNroJugador2, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 					.addGap(60))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(213)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(241, Short.MAX_VALUE)
 					.addComponent(btnSortear)
-					.addContainerGap(219, Short.MAX_VALUE))
+					.addGap(237))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(186)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGap(208)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblSorteo)
 						.addComponent(lblElijaUnNumero))
-					.addContainerGap(260, Short.MAX_VALUE))
+					.addContainerGap(226, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
+					.addGap(36)
 					.addComponent(lblSorteo)
-					.addGap(11)
+					.addGap(18)
 					.addComponent(lblElijaUnNumero)
-					.addGap(77)
+					.addGap(45)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textNroJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textNroJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblJugador)
 						.addComponent(lblJugador_1))
-					.addGap(203)
+					.addPreferredGap(ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
 					.addComponent(btnSortear)
-					.addContainerGap(44, Short.MAX_VALUE))
+					.addGap(112))
 		);
 		setLayout(groupLayout);
 		
