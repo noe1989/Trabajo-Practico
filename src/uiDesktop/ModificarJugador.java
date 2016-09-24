@@ -55,6 +55,7 @@ public class ModificarJugador extends JPanel {
 		JLabel lblPuntosTotales = new JLabel("Puntos Totales:");
 		
 		textPtsTotales = new JTextField();
+		textPtsTotales.setEditable(false);
 		textPtsTotales.setColumns(10);
 		
 		txtVida = new JTextField();
