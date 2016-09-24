@@ -33,7 +33,7 @@ public class Play extends JPanel {
 
 
 	public void setFrame(TurnBasedCombat frame) {
-		this.frame = frame;
+
 	}
 
 	private ControladorJuego ctrl;
@@ -73,7 +73,7 @@ public class Play extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Play(ControladorJuego ctrl) {
+	public Play() {
 		this.ctrl = ctrl;
 		
 		addComponentListener(new ComponentAdapter() {
@@ -324,23 +324,8 @@ public class Play extends JPanel {
 		panelJugador1.setLayout(gl_panelJugador1);
 		setLayout(groupLayout);
 		
-
-		int turno = ctrl.getTurno();
-		System.out.println(turno);
 		
-		Boolean estado = true;
 		
-		switch (turno) {
-	        case 1:  
-	        	setEnablePanel1(estado);
-	        	setEnablePanel2(!estado);
-	            break;
-	        case 2:
-	        	setEnablePanel1(!estado);
-	        	setEnablePanel2(estado);
-				
-	            break;
-		}
 		
 	}
 	
@@ -407,6 +392,25 @@ public class Play extends JPanel {
 		textEnergiaJugador2.setEnabled(estado);
 	
 		textJugador2.setEnabled(estado);
+	}
+	
+	public void turnoJugador(){
+		int turno = ctrl.getTurno();
+		System.out.println(turno);
+		
+		Boolean estado = true;
+		
+		switch (turno) {
+	        case 1:  
+	        	setEnablePanel1(estado);
+	        	setEnablePanel2(!estado);
+	            break;
+	        case 2:
+	        	setEnablePanel1(!estado);
+	        	setEnablePanel2(estado);
+				
+	            break;
+		}
 	}
 		
 	

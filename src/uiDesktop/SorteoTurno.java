@@ -165,8 +165,12 @@ public class SorteoTurno extends JPanel {
 
 	private void play(){
 		
-		Play p = new Play(ctrl);
-		//p.setCtrl(ctrl);
+		Play p = new Play();
+		
+		p.setCtrl(ctrl);
+		
+		p.turnoJugador();
+		
 		p.setFrame((TurnBasedCombat) frame);
 		
 		
