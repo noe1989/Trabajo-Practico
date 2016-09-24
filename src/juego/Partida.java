@@ -1,12 +1,6 @@
 package juego;
 
-import entidades.Personaje;
-
 public class Partida {
-	
-	private int turno;
-	private Personaje personaje1;
-	private Personaje personaje2;
 	
 	
 	

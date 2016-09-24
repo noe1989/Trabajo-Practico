@@ -21,6 +21,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 
+@SuppressWarnings("serial")
 public class IniciarJuego extends JPanel {
 
 	private JTextField textJugador1;

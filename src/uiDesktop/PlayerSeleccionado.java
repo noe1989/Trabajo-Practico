@@ -24,6 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class PlayerSeleccionado extends JPanel {
 	private JTextField textJugador1;
 	private JTextField textJugador2;

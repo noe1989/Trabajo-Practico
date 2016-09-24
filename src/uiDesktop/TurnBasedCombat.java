@@ -13,6 +13,7 @@ import juego.ControladorJuego;
 import java.awt.CardLayout;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class TurnBasedCombat extends JFrame {
 
 	public JPanel contentPane;

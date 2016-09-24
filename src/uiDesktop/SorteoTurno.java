@@ -1,24 +1,20 @@
 package uiDesktop;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import juego.ControladorJuego;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import javax.swing.JToggleButton;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Random;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class SorteoTurno extends JPanel {
 	
 	private TurnBasedCombat frame;

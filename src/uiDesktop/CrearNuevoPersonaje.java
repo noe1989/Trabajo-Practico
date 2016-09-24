@@ -14,14 +14,13 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import database.DataPersonaje;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class CrearNuevoPersonaje extends JPanel {
 	private JTextField textID;
 	private JTextField textNombre;
@@ -53,7 +52,7 @@ public class CrearNuevoPersonaje extends JPanel {
 		
 		JSeparator separator = new JSeparator();
 		
-		JLabel lblCodigoId = new JLabel("Código ID:");
+		JLabel lblCodigoId = new JLabel("Cï¿½digo ID:");
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		
@@ -73,14 +72,14 @@ public class CrearNuevoPersonaje extends JPanel {
 		textVida = new JTextField();
 		textVida.setColumns(10);
 		
-		JLabel lblEnergia = new JLabel("Energía:");
+		JLabel lblEnergia = new JLabel("Energï¿½a:");
 		
 		textEnergia = new JTextField();
 		textEnergia.setColumns(10);
 		
 		JLabel lblDefensa = new JLabel("Defensa:");
 		
-		JLabel lblEvasion = new JLabel("Evasión:");
+		JLabel lblEvasion = new JLabel("Evasiï¿½n:");
 		lblEvasion.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		textDefensa = new JTextField();
@@ -207,9 +206,6 @@ public class CrearNuevoPersonaje extends JPanel {
 		);
 		setLayout(groupLayout);
 		
-		/*DataPersonaje dbPersonaje = new DataPersonaje();
-		
-		textID.setText(String.valueOf(dbPersonaje.nuevoId()));*/
 
 	}
 	
@@ -217,7 +213,7 @@ public class CrearNuevoPersonaje extends JPanel {
 		
 		Personaje personaje = new Personaje();
 		
-		personaje.setPuntosTotales(200);
+		//personaje.setPuntosTotales(200) --> lo maneja el controlador
 		personaje.setDefensa(Integer.parseInt(textDefensa.getText()));
 		personaje.setEnergia(Integer.parseInt(textEnergia.getText()));
 		personaje.setEvasion(Integer.parseInt(textEvasion.getText()));

@@ -2,7 +2,6 @@ package juego;
 
 import database.DataPersonaje;
 import entidades.Personaje;
-import uiDesktop.TurnBasedCombat;
 
 public class ControladorJuego { 
 	
@@ -48,7 +47,8 @@ public class ControladorJuego {
 	public void agregarPersonaje(Personaje personaje){
 	
 		DataPersonaje dbPersonaje = new DataPersonaje();
-	
+		
+		personaje.setPuntosTotales(200); //Cada vez que se agrega un nuevo personaje siempre tiene inicialmente 200 puntosTotales
 		dbPersonaje.add(personaje);
 	}
 

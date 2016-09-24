@@ -2,7 +2,6 @@ package uiDesktop;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -17,7 +16,6 @@ import database.DataPersonaje;
 import entidades.Personaje;
 import juego.ControladorJuego;
 
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -27,6 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+@SuppressWarnings("serial")
 public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 	
 	
@@ -41,9 +40,7 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 		this.ctrl = ctrl;
 	}
 	
-	private JList<String> list;
 	private JTable table;
-	private DefaultListModel<String> modeloLista = new DefaultListModel<String>();
 	private DefaultTableModel modeloTabla = new DefaultTableModel();
 	
 	public SeleccionarNuevoPersonajeDeDB(JFrame frame) {

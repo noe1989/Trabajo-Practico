@@ -1,6 +1,5 @@
 package uiDesktop;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import juego.ControladorJuego;
@@ -10,7 +9,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JSplitPane;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -21,7 +19,10 @@ import entidades.Personaje;
 import java.awt.Color;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class Play extends JPanel {
 
 	private TurnBasedCombat frame;
@@ -74,7 +75,6 @@ public class Play extends JPanel {
 	 * Create the panel.
 	 */
 	public Play() {
-		this.ctrl = ctrl;
 		
 		addComponentListener(new ComponentAdapter() {
 			@Override
@@ -115,19 +115,19 @@ public class Play extends JPanel {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(panelJugador1, GroupLayout.PREFERRED_SIZE, 295, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addComponent(panelJugador2, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE))
-								.addComponent(separatorTitulo, GroupLayout.PREFERRED_SIZE, 510, Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(245)
-							.addComponent(lblTurnBasedCombat, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
+								.addComponent(separatorTitulo, GroupLayout.PREFERRED_SIZE, 609, Short.MAX_VALUE))
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(lblTurnBasedCombat, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
+							.addGap(208))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -138,8 +138,8 @@ public class Play extends JPanel {
 					.addComponent(separatorTitulo, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panelJugador2, GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-						.addComponent(panelJugador1, GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
+						.addComponent(panelJugador2, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+						.addComponent(panelJugador1, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
@@ -165,6 +165,11 @@ public class Play extends JPanel {
 		lblEnergiaJugador2 = new JLabel("Energ\u00EDa:");
 		
 		btnAtacarJugador2 = new JButton("Atacar");
+		btnAtacarJugador2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cambiarTurno();
+			}
+		});
 		
 		btnDefenderJugador2 = new JButton("Defender");
 		
@@ -257,6 +262,12 @@ public class Play extends JPanel {
 		lblEnergiaJugador1 = new JLabel("Energ\u00EDa:");
 		
 		btnAtacarJugador1 = new JButton("Atacar");
+		btnAtacarJugador1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cambiarTurno();
+				
+			}
+		});
 		
 		btnDefenderJugador1 = new JButton("Defender");
 		
@@ -330,10 +341,10 @@ public class Play extends JPanel {
 	}
 	
 	
-	private void actualizar(){
+	/*private void actualizar(){
 		
 		
-	}
+	}*/
 	
 	
 	public void MapearJugador1(Personaje p){
@@ -361,6 +372,12 @@ public class Play extends JPanel {
 	private void setEnablePanel1(Boolean estado){
 		if(estado){
 			panelJugador1.setBackground(new Color(154, 220, 242));
+			textEstadoTurno1.setBackground(Color.green);
+			textEstadoTurno1.setText("TURNO");
+		}else{
+			panelJugador1.setBackground(new Color(238, 238, 238));
+			textEstadoTurno1.setBackground(Color.red);
+			textEstadoTurno1.setText("ESPERA");
 		}
 		
 		btnAtacarJugador1.setEnabled(estado);
@@ -380,6 +397,12 @@ public class Play extends JPanel {
 		
 		if (estado){
 			panelJugador2.setBackground(new Color(154, 220, 242));
+			textEstadoTurno2.setBackground(Color.green);
+			textEstadoTurno2.setText("TURNO");
+		}else{
+			panelJugador2.setBackground(new Color(238, 238, 238));
+			textEstadoTurno2.setBackground(Color.red);
+			textEstadoTurno2.setText("ESPERA");
 		}
 		
 		btnAtacarJugador2.setEnabled(estado);
@@ -396,7 +419,6 @@ public class Play extends JPanel {
 	
 	public void turnoJugador(){
 		int turno = ctrl.getTurno();
-		System.out.println(turno);
 		
 		Boolean estado = true;
 		
@@ -411,6 +433,16 @@ public class Play extends JPanel {
 				
 	            break;
 		}
+	}
+	
+	private void cambiarTurno(){
+		if(ctrl.getTurno()==1){
+			ctrl.setTurno(2);
+		}else{
+			ctrl.setTurno(1);
+		}
+		
+		turnoJugador();
 	}
 		
 	
