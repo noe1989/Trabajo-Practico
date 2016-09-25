@@ -54,27 +54,27 @@ public class SorteoTurno extends JPanel {
 				int op1 = Integer.parseInt(textNroJugador1.getText());
 				int op2 = Integer.parseInt(textNroJugador2.getText());
 				
-				System.out.println("Numero elegido A: "+op1);
-				System.out.println("Numero elegido B: "+op2);
+				//System.out.println("Numero elegido A: "+op1);
+				//System.out.println("Numero elegido B: "+op2);
 				
 				Random rand = new Random();
 				int aleatorio;
 				
 				do{
 				
-					aleatorio = rand.nextInt(5)+1; 
-					System.out.println("Numero aleatorio: "+aleatorio);	
+					aleatorio = rand.nextInt(6); 
+					//System.out.println("Numero aleatorio: "+aleatorio);	
 					
 					if(op1 == aleatorio){
 						int a = 1;	
 						ctrl.setTurno(a);
 						sale = false;
-						System.out.println("Gano el jugador 1");
+						//System.out.println("Gano el jugador 1");
 					}
 					 else if(op2 == aleatorio){
 						int b = 2;
 						ctrl.setTurno(b);
-						System.out.println("Gano el jugador 2");
+						//System.out.println("Gano el jugador 2");
 						sale = false;
 						}
 					
