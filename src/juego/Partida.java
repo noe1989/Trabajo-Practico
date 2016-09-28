@@ -1,35 +1,47 @@
 package juego;
 
+import entidades.Personaje;
+
 public class Partida {
 	
+    Personaje turno;
+    
+    ControladorJuego ctrl;
 	
 	
-	public void menu(){
-		
+	public ControladorJuego getCtrl() {
+		return ctrl;
 	}
-	
-	
-	public void jugarTurno(){
-		
+
+
+	public void setCtrl(ControladorJuego ctrl) {
+		this.ctrl = ctrl;
 	}
-	
-	
-	public void sorteoInicial(){
-		
+
+
+	public Personaje getTurno() {
+		return turno;
 	}
-	
-	
-	public void elegirPersonaje(){
-		
+
+
+	public void setTurno(Personaje turno) {
+		this.turno = turno;
 	}
+
+
 	
 	
-	public void crearPersonaje(){
+	public void atacar(int puntosAtaque){
 		
-	}
-	
-	
-	public void modificarPersonaje(){
+		turno.atacar(puntosAtaque);
+		
+		if(turno.getIdPersonaje()== ctrl.getJugador1().getIdPersonaje()){
+			ctrl.getJugador2().recibirAtaque(puntosAtaque);
+		}else{
+			ctrl.getJugador1().recibirAtaque(puntosAtaque);
+		}
+		
+		
 		
 	}
 	

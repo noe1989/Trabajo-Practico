@@ -1,43 +1,36 @@
 package juego;
 
+import java.util.Random;
+
 import database.DataPersonaje;
 import entidades.Personaje;
 
 public class ControladorJuego { 
 	
-	Personaje Jugador1;
-	Personaje Jugador2; 
+	Personaje jugador1;
+	Personaje jugador2;
+	private Partida partida; 
 	
-	int Turno;
 	
-	
-	public int getTurno() {
-		return Turno;
-	}
-
-
-	public void setTurno(int turno) {
-		Turno = turno;
-	}
 
 
 	public Personaje getJugador1() {
-		return Jugador1;
+		return jugador1;
 	}
 
 
 	public void setJugador1(Personaje jugador1) {
-		Jugador1 = jugador1;
+		this.jugador1 = jugador1;
 	}
 
 
 	public Personaje getJugador2() {
-		return Jugador2;
+		return jugador2;
 	}
 
 
 	public void setJugador2(Personaje jugador2) {
-		Jugador2 = jugador2;
+		this.jugador2 = jugador2;
 	}
 
 
@@ -71,5 +64,54 @@ public class ControladorJuego {
 		dbPersonaje.update(p);
 	}
 
+	public void cambiarTurno(){
+		if(partida.getTurno().getIdPersonaje()==jugador1.getIdPersonaje()){
+			partida.setTurno(jugador2);
+		}else{
+			partida.setTurno(jugador1);
+		}
+		
+		
+	}
+	
+	public void iniciarPartida(){
+		partida = new Partida();
+		partida.setCtrl(this);
 
+	
+	}
+	
+	public void sorteo(int op1,int op2){
+		
+		Boolean sale = true;
+		
+		Random rand = new Random();
+		int aleatorio;
+		
+		do{
+		
+			aleatorio = rand.nextInt(6); 
+				
+			
+			if(op1 == aleatorio){
+				
+				partida.setTurno(jugador1);
+				sale = false;
+				
+			}
+			 else if(op2 == aleatorio){
+				
+				partida.setTurno(jugador2);
+				
+				sale = false;
+				}
+			
+		}while(sale);
+	}
+
+
+	public Partida getPartida() {
+		return partida;
+	}
+		
 }

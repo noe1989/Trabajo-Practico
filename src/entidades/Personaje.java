@@ -1,5 +1,7 @@
 package entidades;
 
+import java.util.Random;
+
 public class Personaje {
 	
 	private int idPersonaje;
@@ -86,6 +88,28 @@ public class Personaje {
 	}
 	
 	
+	public void atacar(int pts){
+		energia = energia - pts;
+	}
+	
+	public void recibirAtaque(int pts){
+		
+		Random rand = new Random();
+		int numAleatorio = rand.nextInt(9); 
+		
+		System.out.println(numAleatorio);
+		
+		System.out.println((numAleatorio*100));
+		System.out.println(evasion);
+		
+		if((numAleatorio*100)>evasion){
+			System.out.println("EVADIDO! Great!");
+		}else{
+			System.out.println("NO EVADIDO");
+			vida = vida - pts;
+		}
+		
+	}
 	
 
 }

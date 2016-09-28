@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
-import java.util.Random;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -49,39 +48,14 @@ public class SorteoTurno extends JPanel {
 		btnSortear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Boolean sale = true;
-				
+		
 				int op1 = Integer.parseInt(textNroJugador1.getText());
 				int op2 = Integer.parseInt(textNroJugador2.getText());
 				
-				//System.out.println("Numero elegido A: "+op1);
-				//System.out.println("Numero elegido B: "+op2);
-				
-				Random rand = new Random();
-				int aleatorio;
-				
-				do{
-				
-					aleatorio = rand.nextInt(6); 
-					//System.out.println("Numero aleatorio: "+aleatorio);	
-					
-					if(op1 == aleatorio){
-						int a = 1;	
-						ctrl.setTurno(a);
-						sale = false;
-						//System.out.println("Gano el jugador 1");
-					}
-					 else if(op2 == aleatorio){
-						int b = 2;
-						ctrl.setTurno(b);
-						//System.out.println("Gano el jugador 2");
-						sale = false;
-						}
-					
-				}while(sale);
-				
-				System.out.println("Comienza partida");
-				
+				ctrl.iniciarPartida();
+
+				ctrl.sorteo(op1,op2);
+
 				play();
 			}
 		});
@@ -164,13 +138,14 @@ public class SorteoTurno extends JPanel {
 		Play p = new Play();
 		
 		p.setCtrl(ctrl);
-		
+		p.setPartida(ctrl.getPartida());
 		p.turnoJugador();
-		
+
 		p.setFrame((TurnBasedCombat) frame);
 		
 		
 		((TurnBasedCombat) frame).cambiarPanel(p, "Play");
 		
 	}
+	
 }
