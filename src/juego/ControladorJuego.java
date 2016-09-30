@@ -77,7 +77,7 @@ public class ControladorJuego {
 	public void iniciarPartida(){
 		partida = new Partida();
 		partida.setCtrl(this);
-
+		partida.inicializar();
 	
 	}
 	
@@ -90,7 +90,7 @@ public class ControladorJuego {
 		
 		do{
 		
-			aleatorio = rand.nextInt(6); 
+			aleatorio = rand.nextInt(5)+1; 
 				
 			
 			if(op1 == aleatorio){

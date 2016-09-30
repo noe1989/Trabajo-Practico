@@ -95,20 +95,29 @@ public class Personaje {
 	public void recibirAtaque(int pts){
 		
 		Random rand = new Random();
-		int numAleatorio = rand.nextInt(9); 
+		
+		int numAleatorio = rand.nextInt(100)+1; 
+		
 		
 		System.out.println(numAleatorio);
 		
-		System.out.println((numAleatorio*100));
+		
 		System.out.println(evasion);
 		
-		if((numAleatorio*100)>evasion){
+		if((numAleatorio)>evasion){
 			System.out.println("EVADIDO! Great!");
 		}else{
 			System.out.println("NO EVADIDO");
 			vida = vida - pts;
+			
 		}
 		
+	}
+
+	public void defensa(int energiaARecupearar, int vidaARecuperar) {
+		
+		vida = vida + vidaARecuperar;
+		energia =energia + energiaARecupearar;
 	}
 	
 

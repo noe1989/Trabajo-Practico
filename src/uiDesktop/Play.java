@@ -189,6 +189,17 @@ public class Play extends JPanel {
 		});
 		
 		btnDefenderJugador2 = new JButton("Defender");
+		btnDefenderJugador2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				partida.defender();
+				MapearJugador2(ctrl.getJugador2());
+				
+				//Despues de realizar todo, cambiar de panel
+				ctrl.cambiarTurno();
+				turnoJugador();
+			}
+		});
 		
 		textEstadoTurno2 = new JTextField();
 		textEstadoTurno2.setBackground(Color.WHITE);
@@ -314,6 +325,19 @@ public class Play extends JPanel {
 		});
 		
 		btnDefenderJugador1 = new JButton("Defender");
+		btnDefenderJugador1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				partida.defender();
+				MapearJugador1(ctrl.getJugador1());
+
+				
+				//Despues de realizar todo, cambiar de panel
+				ctrl.cambiarTurno();
+				turnoJugador();
+			}
+		});
 		
 		textEstadoTurno1 = new JTextField();
 		textEstadoTurno1.setBackground(Color.WHITE);
@@ -404,10 +428,8 @@ public class Play extends JPanel {
 		
 		textJugador1.setText(p.getNombre());
 		textVidaJugador1.setText(String.valueOf(p.getVida()));
-		//xtDef1.setText(String.valueOf(p.getDefensa()));
 		textEnergiaJugador1.setText(String.valueOf(p.getEnergia()));
-		//textEva1.setText(String.valueOf(p.getEvasion()));
-		//textPtosTot1.setText(String.valueOf(p.getPuntosTotales()));*
+
 		
 	}
 	
@@ -415,10 +437,8 @@ public class Play extends JPanel {
 		
 		textJugador2.setText(p.getNombre());
 		textVidaJugador2.setText(String.valueOf(p.getVida()));
-		//textDef2.setText(String.valueOf(p.getDefensa()));
 		textEnergiaJugador2.setText(String.valueOf(p.getEnergia()));
-		//textEva2.setText(String.valueOf(p.getEvasion()));
-		//textPtosTot2.setText(String.valueOf(p.getPuntosTotales()));
+
 		
 	}
 	
