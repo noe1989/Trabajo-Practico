@@ -156,7 +156,7 @@ public class SeleccionarNuevoPersonajeDeDB extends JPanel {
 				ctrl.setJugador2(p);
 				}
 				else{
-					JOptionPane.showMessageDialog(this, "No puede seleccionar el mismo peronaje. Por favor elija otro.", 
+					JOptionPane.showMessageDialog(this, "No puede seleccionar el mismo personaje. Por favor elija otro.", 
 							"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}

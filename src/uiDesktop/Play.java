@@ -8,6 +8,8 @@ import juego.Partida;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JSeparator;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -195,9 +197,14 @@ public class Play extends JPanel {
 				partida.defender();
 				MapearJugador2(ctrl.getJugador2());
 				
-				//Despues de realizar todo, cambiar de panel
-				ctrl.cambiarTurno();
-				turnoJugador();
+				if(ctrl.getJugador1().getVidaActual() <= 0){
+					JOptionPane.showMessageDialog(null, "Ganador Jugador 1", "Ganador", JOptionPane.INFORMATION_MESSAGE);
+					finJuego();					
+				}else{
+					//Despues de realizar todo, cambiar de panel
+					ctrl.cambiarTurno();
+					turnoJugador();
+				}
 			}
 		});
 		
@@ -317,9 +324,18 @@ public class Play extends JPanel {
 				MapearJugador1(ctrl.getJugador1());
 				MapearJugador2(ctrl.getJugador2());
 				
-				//Despues de realizar todo, cambiar de panel
-				ctrl.cambiarTurno();
-				turnoJugador();
+				
+				if(ctrl.getJugador2().getVidaActual() <= 0){
+					JOptionPane.showMessageDialog(null, "Ganador Jugador 1", "Ganador", JOptionPane.INFORMATION_MESSAGE);
+					finJuego();
+					
+				}else{
+					//Despues de realizar todo, cambiar de panel
+					ctrl.cambiarTurno();
+					turnoJugador();
+				}
+				
+				
 				
 			}
 		});
@@ -427,8 +443,8 @@ public class Play extends JPanel {
 	public void MapearJugador1(Personaje p){
 		
 		textJugador1.setText(p.getNombre());
-		textVidaJugador1.setText(String.valueOf(p.getVida()));
-		textEnergiaJugador1.setText(String.valueOf(p.getEnergia()));
+		textVidaJugador1.setText(String.valueOf(p.getVidaActual()));
+		textEnergiaJugador1.setText(String.valueOf(p.getEnergiaActual()));
 
 		
 	}
@@ -436,8 +452,8 @@ public class Play extends JPanel {
 	public void MapearJugador2(Personaje p){
 		
 		textJugador2.setText(p.getNombre());
-		textVidaJugador2.setText(String.valueOf(p.getVida()));
-		textEnergiaJugador2.setText(String.valueOf(p.getEnergia()));
+		textVidaJugador2.setText(String.valueOf(p.getVidaActual()));
+		textEnergiaJugador2.setText(String.valueOf(p.getEnergiaActual()));
 
 		
 	}
@@ -513,5 +529,11 @@ public class Play extends JPanel {
 				
 	            break;
 		}
+	}
+	
+	private void finJuego(){
+		
+		
+	
 	}
 }

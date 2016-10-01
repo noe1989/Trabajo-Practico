@@ -2,6 +2,8 @@ package entidades;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Personaje {
 	
 	private int idPersonaje;
@@ -13,7 +15,28 @@ public class Personaje {
 	private int evasion;
 	private int puntosTotales;
 	
+	private int vidaActual;
+	private int energiaActual;
 	
+	
+	
+
+	public int getVidaActual() {
+		return vidaActual;
+	}
+
+	public void setVidaActual(int vidaActual) {
+		this.vidaActual = vidaActual;
+	}
+
+	public int getEnergiaActual() {
+		return energiaActual;
+	}
+
+	public void setEnergiaActual(int energiaActual) {
+		this.energiaActual = energiaActual;
+	}
+
 	public Personaje() {
 
 	}
@@ -89,7 +112,7 @@ public class Personaje {
 	
 	
 	public void atacar(int pts){
-		energia = energia - pts;
+		energiaActual = energiaActual - pts;
 	}
 	
 	public void recibirAtaque(int pts){
@@ -98,26 +121,25 @@ public class Personaje {
 		
 		int numAleatorio = rand.nextInt(100)+1; 
 		
-		
-		System.out.println(numAleatorio);
-		
-		
-		System.out.println(evasion);
-		
 		if((numAleatorio)>evasion){
-			System.out.println("EVADIDO! Great!");
+			JOptionPane.showMessageDialog(null, "EVADIDO! Great!.", "Turn Based Combat", JOptionPane.INFORMATION_MESSAGE);
 		}else{
-			System.out.println("NO EVADIDO");
-			vida = vida - pts;
+			JOptionPane.showMessageDialog(null, "NO EVADIDO!.", "Turn Based Combat", JOptionPane.INFORMATION_MESSAGE);
+			
+			vidaActual = vidaActual - pts;
 			
 		}
 		
 	}
 
-	public void defensa(int energiaARecupearar, int vidaARecuperar) {
+	public void defensa() {
 		
-		vida = vida + vidaARecuperar;
-		energia =energia + energiaARecupearar;
+		int energiaARecupearar = energia * defensa / 100;
+		int vidaARecuperar = vida * defensa / 250;
+		
+		
+		vidaActual = vidaActual + vidaARecuperar;
+		energiaActual =energiaActual + energiaARecupearar;
 	}
 	
 

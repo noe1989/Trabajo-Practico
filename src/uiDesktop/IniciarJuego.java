@@ -31,6 +31,7 @@ public class IniciarJuego extends JPanel {
 	private JButton btnCrear;
 	
 	ControladorJuego ctrl;
+	private JButton btnContinuar;
 	
 
 	public ControladorJuego getCtrl() {
@@ -94,11 +95,13 @@ public class IniciarJuego extends JPanel {
 			}
 		});
 		
-		JButton btnContinuar = new JButton("Continuar");
+		btnContinuar = new JButton("Continuar");
 		btnContinuar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				continuar(frame);
+				if(btnContinuar.isEnabled()){
+					continuar(frame);
+				}
 				
 			}
 		});
@@ -168,7 +171,7 @@ public class IniciarJuego extends JPanel {
 		);
 		setLayout(groupLayout);
 		
-
+		btnContinuar.setEnabled(false);
 		
 				
 		
@@ -208,6 +211,7 @@ public class IniciarJuego extends JPanel {
 		if(ctrl.getJugador1() != null && ctrl.getJugador2() != null){
 			btnSeleccionar.setEnabled(false);
 			btnCrear.setEnabled(false);
+			btnContinuar.setEnabled(true);
 			
 		}
 		
