@@ -184,9 +184,16 @@ public class Play extends JPanel {
 				MapearJugador1(ctrl.getJugador1());
 				MapearJugador2(ctrl.getJugador2());
 				
-				//Despues de realizar todo, cambiar de panel
-				ctrl.cambiarTurno();
-				turnoJugador();
+				
+				if(ctrl.getJugador1().getVidaActual() <= 0){
+					JOptionPane.showMessageDialog(null, "Ganador Jugador 2", "Ganador", JOptionPane.INFORMATION_MESSAGE);
+					finJuego();					
+				}else{
+					//Despues de realizar todo, cambiar de panel
+					ctrl.cambiarTurno();
+					turnoJugador();
+				}
+				
 			}
 		});
 		
@@ -197,14 +204,9 @@ public class Play extends JPanel {
 				partida.defender();
 				MapearJugador2(ctrl.getJugador2());
 				
-				if(ctrl.getJugador1().getVidaActual() <= 0){
-					JOptionPane.showMessageDialog(null, "Ganador Jugador 1", "Ganador", JOptionPane.INFORMATION_MESSAGE);
-					finJuego();					
-				}else{
-					//Despues de realizar todo, cambiar de panel
-					ctrl.cambiarTurno();
-					turnoJugador();
-				}
+				//Despues de realizar todo, cambiar de panel
+				ctrl.cambiarTurno();
+				turnoJugador();
 			}
 		});
 		
@@ -533,7 +535,9 @@ public class Play extends JPanel {
 	
 	private void finJuego(){
 		
+		partida.finJuego();
 		
+		//((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
 	
 	}
 }

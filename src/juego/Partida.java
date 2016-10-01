@@ -63,4 +63,10 @@ public class Partida {
 	}
 	
 	
+	public void finJuego(){
+		
+		System.out.println("Fin Juego");
+		
+	}
+	
 }
