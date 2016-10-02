@@ -65,7 +65,7 @@ public class DataPersonaje {
 			stmt.setInt(6, p.getIdPersonaje());
 			
 			stmt.execute();
-						
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -113,5 +113,21 @@ public class ControladorJuego {
 	public Partida getPartida() {
 		return partida;
 	}
+	
+	public void actualizarGanador(Personaje p){
+		
+		DataPersonaje dbPersonaje = new DataPersonaje();
+		
+		dbPersonaje.update(p);
+		
+	}
+
+
+	public void cleanJugadores() {
+		
+		jugador1 = null;
+		jugador2 = null;
+		
+	}
 		
 }

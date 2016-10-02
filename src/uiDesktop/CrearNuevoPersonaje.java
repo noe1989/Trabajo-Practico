@@ -228,6 +228,7 @@ public class CrearNuevoPersonaje extends JPanel {
 		}else{
 			ctrl.setJugador2(personaje);
 		}
+		
 		((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
 	}
 }

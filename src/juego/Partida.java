@@ -65,7 +65,11 @@ public class Partida {
 	
 	public void finJuego(){
 		
-		System.out.println("Fin Juego");
+		turno.sumarPuntaje();
+		
+		ctrl.actualizarGanador(turno);
+		
+		ctrl.cleanJugadores();
 		
 	}
 	

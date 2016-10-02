@@ -45,6 +45,8 @@ public class Play extends JPanel {
 
 
 
+	
+
 	public TurnBasedCombat getFrame() {
 		return frame;
 	}
@@ -52,8 +54,12 @@ public class Play extends JPanel {
 
 
 	public void setFrame(TurnBasedCombat frame) {
-
+		this.frame = frame;
 	}
+
+
+
+
 
 	private ControladorJuego ctrl;
 	private JTextField textJugador1;
@@ -537,7 +543,11 @@ public class Play extends JPanel {
 		
 		partida.finJuego();
 		
-		//((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
+		//IniciarJuego ini = new IniciarJuego(frame);
+		//frame.cambiarPanel(ini, "IniciarJuego");
+		
+		frame.cambiarAPanelExistente("IniciarJuego");
+
 	
 	}
 }

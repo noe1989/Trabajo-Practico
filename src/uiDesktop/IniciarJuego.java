@@ -33,6 +33,8 @@ public class IniciarJuego extends JPanel {
 	ControladorJuego ctrl;
 	private JButton btnContinuar;
 	
+	private Boolean juegoNuevo = false;
+	
 
 	public ControladorJuego getCtrl() {
 		return ctrl;
@@ -46,7 +48,11 @@ public class IniciarJuego extends JPanel {
 		addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentShown(ComponentEvent e) {
-				actualizar();
+				if(!juegoNuevo){
+					actualizar();
+				}else{
+					jugarDeNuevo();
+				}
 			}
 		});
 		setBackground(new Color(102, 153, 204));
@@ -223,5 +229,19 @@ public class IniciarJuego extends JPanel {
 		ps.setCtrl(ctrl);
 		((TurnBasedCombat) frame).cambiarPanel(ps, "PlayerSeleccionado");
 		
+		juegoNuevo = true;
+		
+	}
+	
+	private void jugarDeNuevo(){
+		
+		textJugador1.setText(null);
+		textJugador2.setText(null);
+		
+		btnSeleccionar.setEnabled(true);
+		btnCrear.setEnabled(true);
+		btnContinuar.setEnabled(false);
+		
+		actualizar();
 	}
 }

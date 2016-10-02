@@ -142,5 +142,10 @@ public class Personaje {
 		energiaActual =energiaActual + energiaARecupearar;
 	}
 	
+	public void sumarPuntaje(){
+		
+		puntosTotales += 10;
+		
+	}
 
 }
