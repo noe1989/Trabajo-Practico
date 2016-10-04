@@ -52,15 +52,17 @@ public class CrearNuevoPersonaje extends JPanel {
 		
 		JSeparator separator = new JSeparator();
 		
-		JLabel lblCodigoId = new JLabel("C�digo ID:");
+		JLabel lblCodigoId = new JLabel("Codigo ID:");
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		
 		textID = new JTextField();
+		textID.setHorizontalAlignment(SwingConstants.LEFT);
 		textID.setEditable(false);
 		textID.setColumns(10);
 		
 		textNombre = new JTextField();
+		textNombre.setHorizontalAlignment(SwingConstants.LEFT);
 		textNombre.setColumns(10);
 		
 		JLabel lblPuntosDeBatalla = new JLabel("Puntos de Batalla");
@@ -70,22 +72,26 @@ public class CrearNuevoPersonaje extends JPanel {
 		JLabel lblVida = new JLabel("Vida:");
 		
 		textVida = new JTextField();
+		textVida.setHorizontalAlignment(SwingConstants.LEFT);
 		textVida.setColumns(10);
 		
-		JLabel lblEnergia = new JLabel("Energ�a:");
+		JLabel lblEnergia = new JLabel("Energia:");
 		
 		textEnergia = new JTextField();
+		textEnergia.setHorizontalAlignment(SwingConstants.LEFT);
 		textEnergia.setColumns(10);
 		
 		JLabel lblDefensa = new JLabel("Defensa:");
 		
-		JLabel lblEvasion = new JLabel("Evasi�n:");
+		JLabel lblEvasion = new JLabel("Evasion:");
 		lblEvasion.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		textDefensa = new JTextField();
+		textDefensa.setHorizontalAlignment(SwingConstants.LEFT);
 		textDefensa.setColumns(10);
 		
 		textEvasion = new JTextField();
+		textEvasion.setHorizontalAlignment(SwingConstants.LEFT);
 		textEvasion.setColumns(10);
 		
 		JSeparator separator_2 = new JSeparator();
@@ -94,6 +100,7 @@ public class CrearNuevoPersonaje extends JPanel {
 		JLabel lblPuntos = new JLabel("Pts. Restantes");
 		
 		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.LEFT);
 		textField.setColumns(10);
 		
 		JButton btnCrearPersonaje = new JButton("Crear Personaje");
@@ -113,7 +120,7 @@ public class CrearNuevoPersonaje extends JPanel {
 							.addComponent(lblNuevoPersonaje))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(separator, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 430, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -136,26 +143,30 @@ public class CrearNuevoPersonaje extends JPanel {
 								.addComponent(lblVida))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textVida, GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+								.addComponent(textVida, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
 								.addComponent(textEnergia, 0, 0, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblEvasion)
+								.addComponent(lblDefensa))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(textDefensa, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textEvasion, 0, 0, Short.MAX_VALUE))
+							.addGap(24)
+							.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblEvasion)
-										.addComponent(lblDefensa))
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(textDefensa, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textEvasion, 0, 0, Short.MAX_VALUE))
-									.addGap(24)
-									.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(textField, 0, 0, Short.MAX_VALUE)
-										.addComponent(lblPuntos, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-									.addGap(44))
-								.addComponent(btnCrearPersonaje))))
+									.addComponent(lblPuntos)
+									.addPreferredGap(ComponentPlacement.RELATED, 101, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(18)
+									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+									.addGap(44))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(255)
+							.addComponent(btnCrearPersonaje)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -170,7 +181,7 @@ public class CrearNuevoPersonaje extends JPanel {
 							.addGap(124)
 							.addComponent(lblPuntos)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField, GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -186,7 +197,7 @@ public class CrearNuevoPersonaje extends JPanel {
 							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(separator_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+								.addComponent(separator_2, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 56, Short.MAX_VALUE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(textVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -200,9 +211,9 @@ public class CrearNuevoPersonaje extends JPanel {
 											.addComponent(textEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 											.addComponent(lblEvasion)
 											.addComponent(textEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))))
-					.addGap(49)
+					.addGap(21)
 					.addComponent(btnCrearPersonaje)
-					.addContainerGap())
+					.addGap(39))
 		);
 		setLayout(groupLayout);
 		

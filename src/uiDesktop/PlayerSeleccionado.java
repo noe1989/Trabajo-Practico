@@ -179,6 +179,10 @@ public class PlayerSeleccionado extends JPanel {
 		});
 		
 		JButton btnJugar = new JButton("JUGAR");
+		btnJugar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnJugar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -231,7 +235,7 @@ public class PlayerSeleccionado extends JPanel {
 								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 									.addGroup(groupLayout.createSequentialGroup()
-										.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
 										.addComponent(lblJugador2)
 										.addGap(99))
 									.addGroup(groupLayout.createSequentialGroup()
@@ -259,9 +263,9 @@ public class PlayerSeleccionado extends JPanel {
 							.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(199)
+					.addGap(273)
 					.addComponent(btnJugar)
-					.addContainerGap(183, Short.MAX_VALUE))
+					.addContainerGap(325, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -331,11 +335,11 @@ public class PlayerSeleccionado extends JPanel {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(12)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(separator, GroupLayout.PREFERRED_SIZE, 273, Short.MAX_VALUE)
+										.addComponent(separator, GroupLayout.PREFERRED_SIZE, 291, Short.MAX_VALUE)
 										.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnJugar)
-					.addGap(38))
+					.addGap(43))
 		);
 		setLayout(groupLayout);
 		

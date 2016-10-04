@@ -61,6 +61,7 @@ public class IniciarJuego extends JPanel {
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 17));
 		
 		JLabel lblVs = new JLabel("VS");
+		lblVs.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		textJugador1 = new JTextField();
 		textJugador1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,6 +75,7 @@ public class IniciarJuego extends JPanel {
 		JLabel lblJugador2 = new JLabel("Jugador 2");
 		
 		textJugador2 = new JTextField();
+		textJugador2.setHorizontalAlignment(SwingConstants.CENTER);
 		textJugador2.setEditable(false);
 		textJugador2.setColumns(10);
 		
@@ -113,40 +115,41 @@ public class IniciarJuego extends JPanel {
 		});
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 518, Short.MAX_VALUE))
+							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 659, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGap(135)
+							.addComponent(btnSeleccionar)
+							.addGap(86)
+							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+							.addComponent(btnCrear)
+							.addGap(143))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(216)
+							.addGap(295)
+							.addComponent(btnContinuar))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(275)
+							.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(274)
+							.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(297)
 							.addComponent(lblJugador1))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(155)
-							.addComponent(lblTitulo))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(235)
-							.addComponent(lblVs))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(114)
-							.addComponent(btnSeleccionar)
-							.addGap(18)
-							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnCrear))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(215)
+							.addGap(300)
 							.addComponent(lblJugador2))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(192)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, 224, Short.MAX_VALUE))
+							.addGap(323)
+							.addComponent(lblVs))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(202)
-							.addComponent(btnContinuar)))
+							.addGap(236)
+							.addComponent(lblTitulo)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -156,24 +159,28 @@ public class IniciarJuego extends JPanel {
 					.addComponent(lblTitulo)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblJugador1)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblVs)
-					.addGap(18)
-					.addComponent(lblJugador2)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(38)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnSeleccionar)
-						.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnCrear))
-					.addPreferredGap(ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(11)
+							.addComponent(lblJugador1)
+							.addGap(11)
+							.addComponent(textJugador1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblVs, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+							.addGap(29)
+							.addComponent(lblJugador2)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(textJugador2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(213)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnSeleccionar)
+								.addComponent(btnCrear))))
+					.addGap(192)
 					.addComponent(btnContinuar)
-					.addContainerGap())
+					.addGap(106))
 		);
 		setLayout(groupLayout);
 		
