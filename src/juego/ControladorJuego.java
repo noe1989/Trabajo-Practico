@@ -129,5 +129,12 @@ public class ControladorJuego {
 		jugador2 = null;
 		
 	}
+	
+	public int getNuevoID(){
+		
+		DataPersonaje dbPersonaje = new DataPersonaje();
+				
+		return dbPersonaje.getNuevoID();
+	}
 		
 }

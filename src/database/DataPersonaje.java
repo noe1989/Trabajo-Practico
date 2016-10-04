@@ -10,7 +10,6 @@ import entidades.*;
 public class DataPersonaje {
 	
 	
-	
 	public DataPersonaje(){
 		
 	}
@@ -145,6 +144,37 @@ public class DataPersonaje {
 		
 		
 		return p;
+	}
+	
+	public int getNuevoID(){
+		
+		ResultSet rs = null;
+		PreparedStatement stmt = null;
+		
+		int a = 0;
+		
+		try {
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("SELECT ifnull(max(idPersonaje),0) as idPersonaje FROM personajes;");
+			rs = stmt.executeQuery();
+			
+			a = rs.getInt("idPersonaje");
+		
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally{
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			FactoryConexion.getInstancia().releaseConn();
+		}		
+		
+		return a+1;
 	}
 
 }

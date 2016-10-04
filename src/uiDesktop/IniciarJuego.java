@@ -208,6 +208,7 @@ public class IniciarJuego extends JPanel {
 		CrearNuevoPersonaje cnp = new CrearNuevoPersonaje(frame);
 		
 		cnp.setCtrl(ctrl);
+		cnp.completarID();
 		
 		((TurnBasedCombat) frame).cambiarPanel(cnp, "CrearNuevoPersonaje");
 	}

@@ -9,11 +9,12 @@ import entidades.Personaje;
 import juego.ControladorJuego;
 
 import javax.swing.JSeparator;
+
 import java.awt.Font;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -28,10 +29,12 @@ public class CrearNuevoPersonaje extends JPanel {
 	private JTextField textEnergia;
 	private JTextField textDefensa;
 	private JTextField textEvasion;
-	private JTextField textField;
+	private JTextField textPuntosRestantes;
+	
+	private int ptsTot = 200;
 	
 	private ControladorJuego ctrl;
-
+	
 	public ControladorJuego getCtrl() {
 		return ctrl;
 	}
@@ -71,37 +74,71 @@ public class CrearNuevoPersonaje extends JPanel {
 		
 		JLabel lblVida = new JLabel("Vida:");
 		
-		textVida = new JTextField();
+		textVida = new JTextField("0");
 		textVida.setHorizontalAlignment(SwingConstants.LEFT);
 		textVida.setColumns(10);
+		textVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                
+            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	
+                textPuntosRestantes.setText(String.valueOf(ptsTot));
+            }
+        });
+		
 		
 		JLabel lblEnergia = new JLabel("Energia:");
 		
-		textEnergia = new JTextField();
+		textEnergia = new JTextField("0");
 		textEnergia.setHorizontalAlignment(SwingConstants.LEFT);
 		textEnergia.setColumns(10);
+		textEnergia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                
+            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());            	
+                textPuntosRestantes.setText(String.valueOf(ptsTot));
+            }
+        });
+		
 		
 		JLabel lblDefensa = new JLabel("Defensa:");
 		
 		JLabel lblEvasion = new JLabel("Evasion:");
 		lblEvasion.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		textDefensa = new JTextField();
+		textDefensa = new JTextField("0");
 		textDefensa.setHorizontalAlignment(SwingConstants.LEFT);
 		textDefensa.setColumns(10);
+		textDefensa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                
+            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());            	
+                textPuntosRestantes.setText(String.valueOf(ptsTot));
+            }
+        });
 		
-		textEvasion = new JTextField();
+		textEvasion = new JTextField("0");
 		textEvasion.setHorizontalAlignment(SwingConstants.LEFT);
 		textEvasion.setColumns(10);
+		textEvasion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                
+            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());            	
+                textPuntosRestantes.setText(String.valueOf(ptsTot));
+            }
+        });
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setOrientation(SwingConstants.VERTICAL);
 		
 		JLabel lblPuntos = new JLabel("Pts. Restantes");
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.LEFT);
-		textField.setColumns(10);
+		textPuntosRestantes = new JTextField();
+		textPuntosRestantes.setHorizontalAlignment(SwingConstants.LEFT);
+		textPuntosRestantes.setColumns(10);
+		textPuntosRestantes.setText(String.valueOf(ptsTot));
+			
+		
 		
 		JButton btnCrearPersonaje = new JButton("Crear Personaje");
 		btnCrearPersonaje.addMouseListener(new MouseAdapter() {
@@ -120,7 +157,7 @@ public class CrearNuevoPersonaje extends JPanel {
 							.addComponent(lblNuevoPersonaje))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 430, Short.MAX_VALUE))
+							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 548, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -143,31 +180,28 @@ public class CrearNuevoPersonaje extends JPanel {
 								.addComponent(lblVida))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textVida, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+								.addComponent(textVida, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
 								.addComponent(textEnergia, 0, 0, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblEvasion)
 								.addComponent(lblDefensa))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textDefensa, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textEvasion, 0, 0, Short.MAX_VALUE))
-							.addGap(24)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(textEvasion, 0, 0, Short.MAX_VALUE)
+								.addComponent(textDefensa, GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
 							.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(lblPuntos)
-									.addPreferredGap(ComponentPlacement.RELATED, 101, Short.MAX_VALUE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(18)
-									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-									.addGap(44))))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(255)
-							.addComponent(btnCrearPersonaje)))
+							.addGap(18)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblPuntos)
+								.addComponent(textPuntosRestantes, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, 148, Short.MAX_VALUE)))
 					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(225, Short.MAX_VALUE)
+					.addComponent(btnCrearPersonaje)
+					.addGap(222))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -181,7 +215,7 @@ public class CrearNuevoPersonaje extends JPanel {
 							.addGap(124)
 							.addComponent(lblPuntos)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
+							.addComponent(textPuntosRestantes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -197,7 +231,7 @@ public class CrearNuevoPersonaje extends JPanel {
 							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(separator_2, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 56, Short.MAX_VALUE)
+								.addComponent(separator_2, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 336, Short.MAX_VALUE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(textVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -211,20 +245,20 @@ public class CrearNuevoPersonaje extends JPanel {
 											.addComponent(textEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 											.addComponent(lblEvasion)
 											.addComponent(textEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))))
-					.addGap(21)
+					.addGap(18)
 					.addComponent(btnCrearPersonaje)
-					.addGap(39))
+					.addGap(42))
 		);
 		setLayout(groupLayout);
 		
-
+	
+		
 	}
 	
 	private void crearPersonaje(JFrame frame){
 		
 		Personaje personaje = new Personaje();
 		
-		//personaje.setPuntosTotales(200) --> lo maneja el controlador
 		personaje.setDefensa(Integer.parseInt(textDefensa.getText()));
 		personaje.setEnergia(Integer.parseInt(textEnergia.getText()));
 		personaje.setEvasion(Integer.parseInt(textEvasion.getText()));
@@ -241,5 +275,13 @@ public class CrearNuevoPersonaje extends JPanel {
 		}
 		
 		((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
+	}
+	
+
+	public void completarID() {
+		int a = ctrl.getNuevoID();
+		System.out.println(a);
+		//textID.setText(String.valueOf(a));
+		
 	}
 }

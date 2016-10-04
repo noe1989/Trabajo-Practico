@@ -192,7 +192,6 @@ public class Play extends JPanel {
 				
 				
 				if(ctrl.getJugador1().getVidaActual() <= 0){
-					JOptionPane.showMessageDialog(null, "Ganador Jugador 2", "Ganador", JOptionPane.INFORMATION_MESSAGE);
 					finJuego();					
 				}else{
 					//Despues de realizar todo, cambiar de panel
@@ -335,7 +334,6 @@ public class Play extends JPanel {
 				
 				
 				if(ctrl.getJugador2().getVidaActual() <= 0){
-					JOptionPane.showMessageDialog(null, "Ganador Jugador 1", "Ganador", JOptionPane.INFORMATION_MESSAGE);
 					finJuego();
 					
 				}else{
@@ -544,11 +542,9 @@ public class Play extends JPanel {
 	}
 	
 	private void finJuego(){
+		JOptionPane.showMessageDialog(null, "Ganador Jugador: "+ partida.getTurno().getNombre(), "Ganador", JOptionPane.INFORMATION_MESSAGE);
 		
 		partida.finJuego();
-		
-		//IniciarJuego ini = new IniciarJuego(frame);
-		//frame.cambiarPanel(ini, "IniciarJuego");
 		
 		frame.cambiarAPanelExistente("IniciarJuego");
 

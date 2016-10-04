@@ -3,12 +3,15 @@ package uiDesktop;
 import javax.swing.JPanel;
 
 import juego.ControladorJuego;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -55,7 +58,9 @@ public class SorteoTurno extends JPanel {
 				ctrl.iniciarPartida();
 
 				ctrl.sorteo(op1,op2);
-
+				
+				JOptionPane.showMessageDialog(null, "Comienza jugador: "+ ctrl.getPartida().getTurno().getNombre(), 
+						"Sorteo", JOptionPane.INFORMATION_MESSAGE);
 				play();
 			}
 		});

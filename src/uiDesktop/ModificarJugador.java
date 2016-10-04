@@ -5,12 +5,14 @@ import javax.swing.JPanel;
 
 import entidades.Personaje;
 import juego.ControladorJuego;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -20,10 +22,13 @@ public class ModificarJugador extends JPanel {
 	private ControladorJuego ctrl;
 	private JTextField textNombre;
 	private JTextField textPtsTotales;
-	private JTextField txtVida;
-	private JTextField txtEnergia;
-	private JTextField txtEvasion;
-	private JTextField txtDefensa;
+	private JTextField textVida;
+	private JTextField textEnergia;
+	private JTextField textEvasion;
+	private JTextField textDefensa;
+	private JTextField textPuntosRestantes;
+	
+	private int ptsTot;
 	
 	
 	public ControladorJuego getCtrl() {
@@ -58,17 +63,49 @@ public class ModificarJugador extends JPanel {
 		textPtsTotales.setEditable(false);
 		textPtsTotales.setColumns(10);
 		
-		txtVida = new JTextField();
-		txtVida.setColumns(10);
+		textVida = new JTextField();
+		textVida.setColumns(10);
+		textVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                
+            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	
+                textPuntosRestantes.setText(String.valueOf(ptsTot));
+            }
+        });
 		
-		txtEnergia = new JTextField();
-		txtEnergia.setColumns(10);
+		textEnergia = new JTextField();
+		textEnergia.setColumns(10);
+		textEnergia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                
+            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	
+                textPuntosRestantes.setText(String.valueOf(ptsTot));
+            }
+        });
 		
-		txtEvasion = new JTextField();
-		txtEvasion.setColumns(10);
+		textEvasion = new JTextField();
+		textEvasion.setColumns(10);
+		textEvasion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                
+            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	
+                textPuntosRestantes.setText(String.valueOf(ptsTot));
+            }
+        });
 		
-		txtDefensa = new JTextField();
-		txtDefensa.setColumns(10);
+		textDefensa = new JTextField();
+		textDefensa.setColumns(10);
+		textDefensa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                
+            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	
+                textPuntosRestantes.setText(String.valueOf(ptsTot));
+            }
+        });
 		
 		JLabel lblVida = new JLabel("Vida:");
 		
@@ -77,39 +114,53 @@ public class ModificarJugador extends JPanel {
 		JLabel lblEvasion = new JLabel("Evasion:");
 		
 		JLabel lblDefensa = new JLabel("Defensa:");
+		
+		JLabel lblPuntosRestantes = new JLabel("Puntos Restantes");
+		
+		textPuntosRestantes = new JTextField();
+		textPuntosRestantes.setEditable(false);
+		textPuntosRestantes.setColumns(10);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(51)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblModificarJugador)
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+							.addComponent(lblEvasion)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblEnergia)
+								.addComponent(lblVida))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblPuntosTotales)
+								.addComponent(lblDefensa))))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(51)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblModificarJugador)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addComponent(lblEvasion)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblEnergia)
-										.addComponent(lblVida))
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblPuntosTotales)
-										.addComponent(lblDefensa))))
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(textEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(txtEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(textEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(textVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(textNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtDefensa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(txtEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(23)
-									.addComponent(textPtsTotales, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+										.addComponent(textDefensa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addContainerGap(364, Short.MAX_VALUE))))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(243)
-							.addComponent(btnAplicar)))
-					.addContainerGap(305, Short.MAX_VALUE))
+							.addGap(23)
+							.addComponent(textPtsTotales, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(351, Short.MAX_VALUE))))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(243)
+					.addComponent(btnAplicar)
+					.addContainerGap(292, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(405, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(textPuntosRestantes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblPuntosRestantes))
+					.addGap(109))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -120,27 +171,35 @@ public class ModificarJugador extends JPanel {
 						.addComponent(textNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblVida))
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblEnergia))
-					.addGap(29)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblEvasion))
-					.addGap(35)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblDefensa)
-						.addComponent(txtDefensa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+					.addComponent(lblPuntosRestantes)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblPuntosTotales)
-						.addComponent(textPtsTotales, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(55)
-					.addComponent(btnAplicar)
-					.addGap(38))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblEnergia))
+							.addGap(29)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblEvasion))
+							.addGap(35)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblDefensa)
+								.addComponent(textDefensa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblPuntosTotales)
+								.addComponent(textPtsTotales, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(55)
+							.addComponent(btnAplicar)
+							.addGap(38))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(10)
+							.addComponent(textPuntosRestantes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
 		);
 		setLayout(groupLayout);
 		
@@ -160,20 +219,23 @@ public class ModificarJugador extends JPanel {
 	public void MapearJugadorAFormulario(Personaje p){
 		
 		textNombre.setText(p.getNombre());
-		txtVida.setText(String.valueOf(p.getVida()));
-		txtDefensa.setText(String.valueOf(p.getDefensa()));
-		txtEnergia.setText(String.valueOf(p.getEnergia()));
-		txtEvasion.setText(String.valueOf(p.getEvasion()));
+		textVida.setText(String.valueOf(p.getVida()));
+		textDefensa.setText(String.valueOf(p.getDefensa()));
+		textEnergia.setText(String.valueOf(p.getEnergia()));
+		textEvasion.setText(String.valueOf(p.getEvasion()));
 		textPtsTotales.setText(String.valueOf(p.getPuntosTotales()));
+		
+		textPuntosRestantes.setText(String.valueOf(p.getPuntosTotales()- p.getVida() - p.getDefensa() - p.getEnergia() - p.getEvasion()));
+		
 		
 	}
 	
 	public Personaje MapearJugadorDeFormulario(Personaje p){
 		p.setPuntosTotales(Integer.parseInt(textPtsTotales.getText()));
-		p.setDefensa(Integer.parseInt(txtDefensa.getText()));
-		p.setEnergia(Integer.parseInt(txtEnergia.getText()));
-		p.setEvasion(Integer.parseInt(txtEvasion.getText()));
-		p.setVida(Integer.parseInt(txtVida.getText()));
+		p.setDefensa(Integer.parseInt(textDefensa.getText()));
+		p.setEnergia(Integer.parseInt(textEnergia.getText()));
+		p.setEvasion(Integer.parseInt(textEvasion.getText()));
+		p.setVida(Integer.parseInt(textVida.getText()));
 		
 		
 		return p;
