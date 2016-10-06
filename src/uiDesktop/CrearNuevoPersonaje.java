@@ -23,7 +23,6 @@ import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class CrearNuevoPersonaje extends JPanel {
-	private JTextField textID;
 	private JTextField textNombre;
 	private JTextField textVida;
 	private JTextField textEnergia;
@@ -55,17 +54,11 @@ public class CrearNuevoPersonaje extends JPanel {
 		
 		JSeparator separator = new JSeparator();
 		
-		JLabel lblCodigoId = new JLabel("Codigo ID:");
-		
 		JLabel lblNombre = new JLabel("Nombre:");
-		
-		textID = new JTextField();
-		textID.setHorizontalAlignment(SwingConstants.LEFT);
-		textID.setEditable(false);
-		textID.setColumns(10);
+		lblNombre.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		textNombre = new JTextField();
-		textNombre.setHorizontalAlignment(SwingConstants.LEFT);
+		textNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		textNombre.setColumns(10);
 		
 		JLabel lblPuntosDeBatalla = new JLabel("Puntos de Batalla");
@@ -75,7 +68,7 @@ public class CrearNuevoPersonaje extends JPanel {
 		JLabel lblVida = new JLabel("Vida:");
 		
 		textVida = new JTextField("0");
-		textVida.setHorizontalAlignment(SwingConstants.LEFT);
+		textVida.setHorizontalAlignment(SwingConstants.CENTER);
 		textVida.setColumns(10);
 		textVida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -90,7 +83,7 @@ public class CrearNuevoPersonaje extends JPanel {
 		JLabel lblEnergia = new JLabel("Energia:");
 		
 		textEnergia = new JTextField("0");
-		textEnergia.setHorizontalAlignment(SwingConstants.LEFT);
+		textEnergia.setHorizontalAlignment(SwingConstants.CENTER);
 		textEnergia.setColumns(10);
 		textEnergia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -107,7 +100,7 @@ public class CrearNuevoPersonaje extends JPanel {
 		lblEvasion.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		textDefensa = new JTextField("0");
-		textDefensa.setHorizontalAlignment(SwingConstants.LEFT);
+		textDefensa.setHorizontalAlignment(SwingConstants.CENTER);
 		textDefensa.setColumns(10);
 		textDefensa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -118,7 +111,7 @@ public class CrearNuevoPersonaje extends JPanel {
         });
 		
 		textEvasion = new JTextField("0");
-		textEvasion.setHorizontalAlignment(SwingConstants.LEFT);
+		textEvasion.setHorizontalAlignment(SwingConstants.CENTER);
 		textEvasion.setColumns(10);
 		textEvasion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -132,21 +125,27 @@ public class CrearNuevoPersonaje extends JPanel {
 		separator_2.setOrientation(SwingConstants.VERTICAL);
 		
 		JLabel lblPuntos = new JLabel("Pts. Restantes");
+		lblPuntos.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		textPuntosRestantes = new JTextField();
-		textPuntosRestantes.setHorizontalAlignment(SwingConstants.LEFT);
+		textPuntosRestantes.setHorizontalAlignment(SwingConstants.CENTER);
 		textPuntosRestantes.setColumns(10);
 		textPuntosRestantes.setText(String.valueOf(ptsTot));
 			
 		
 		
 		JButton btnCrearPersonaje = new JButton("Crear Personaje");
+		btnCrearPersonaje.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnCrearPersonaje.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				crearPersonaje(frame);
 			}
 		});
+		
+		JLabel lblMax = new JLabel("Max. 20");
+		
+		JLabel lblMax_1 = new JLabel("Max. 80");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -157,16 +156,12 @@ public class CrearNuevoPersonaje extends JPanel {
 							.addComponent(lblNuevoPersonaje))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 548, Short.MAX_VALUE))
+							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 625, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblCodigoId)
-								.addComponent(lblNombre))
+							.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textID, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textNombre, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(textNombre, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(lblPuntosDeBatalla))
@@ -180,7 +175,7 @@ public class CrearNuevoPersonaje extends JPanel {
 								.addComponent(lblVida))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textVida, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+								.addComponent(textVida, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
 								.addComponent(textEnergia, 0, 0, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -188,20 +183,23 @@ public class CrearNuevoPersonaje extends JPanel {
 								.addComponent(lblDefensa))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(textEvasion, 0, 0, Short.MAX_VALUE)
-								.addComponent(textDefensa, GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-							.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
+								.addComponent(textDefensa, 0, 0, Short.MAX_VALUE)
+								.addComponent(textEvasion, GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblPuntos)
-								.addComponent(textPuntosRestantes, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, 148, Short.MAX_VALUE)))
+								.addComponent(lblMax_1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblMax))
+							.addGap(32)
+							.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+							.addGap(43)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(textPuntosRestantes)
+								.addComponent(lblPuntos, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED, 167, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(244)
+							.addComponent(btnCrearPersonaje)))
 					.addContainerGap())
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(225, Short.MAX_VALUE)
-					.addComponent(btnCrearPersonaje)
-					.addGap(222))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -210,44 +208,46 @@ public class CrearNuevoPersonaje extends JPanel {
 					.addComponent(lblNuevoPersonaje)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGap(42)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(124)
-							.addComponent(lblPuntos)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textPuntosRestantes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblCodigoId)
-								.addComponent(textID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNombre)
-								.addComponent(textNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addComponent(lblPuntosDeBatalla)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(separator_2, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 336, Short.MAX_VALUE)
 								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(124)
+									.addComponent(lblPuntos)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(textPuntosRestantes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(42)
+									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(textNombre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNombre, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
+									.addGap(18)
+									.addComponent(lblPuntosDeBatalla)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
 									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(textVida, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 										.addComponent(lblVida)
 										.addComponent(lblDefensa)
-										.addComponent(textDefensa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addComponent(textDefensa, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblMax))
 									.addGap(16)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblEnergia)
 										.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 											.addComponent(textEnergia, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 											.addComponent(lblEvasion)
-											.addComponent(textEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))))
-					.addGap(18)
+											.addComponent(textEvasion, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addComponent(lblMax_1)))))
+							.addGap(32))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(separator_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)))
+					.addGap(8)
 					.addComponent(btnCrearPersonaje)
-					.addGap(42))
+					.addContainerGap(234, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 		
@@ -267,7 +267,6 @@ public class CrearNuevoPersonaje extends JPanel {
 		
 		ctrl.agregarPersonaje(personaje);
 		
-	
 		if(ctrl.getJugador1() == null){
 			ctrl.setJugador1(personaje);
 		}else{
@@ -275,13 +274,5 @@ public class CrearNuevoPersonaje extends JPanel {
 		}
 		
 		((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
-	}
-	
-
-	public void completarID() {
-		int a = ctrl.getNuevoID();
-		System.out.println(a);
-		//textID.setText(String.valueOf(a));
-		
 	}
 }

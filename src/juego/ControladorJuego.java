@@ -4,6 +4,7 @@ import java.util.Random;
 
 import database.DataPersonaje;
 import entidades.Personaje;
+import util.ApplicationException;
 
 public class ControladorJuego { 
 	
@@ -41,8 +42,18 @@ public class ControladorJuego {
 	
 		DataPersonaje dbPersonaje = new DataPersonaje();
 		
-		personaje.setPuntosTotales(200); //Cada vez que se agrega un nuevo personaje siempre tiene inicialmente 200 puntosTotales
-		dbPersonaje.add(personaje);
+		Boolean ok = dbPersonaje.getByNombre(personaje.getNombre());
+			
+		try {
+			if(ok){
+				personaje.setPuntosTotales(200); //Cada vez que se agrega un nuevo personaje siempre tiene inicialmente 200 puntosTotales
+				dbPersonaje.add(personaje);
+			}else{
+				throw (new ApplicationException());
+			}
+		}catch (ApplicationException e) {
+				e.errorNombrePersonaje();
+			}
 	}
 
 
@@ -130,11 +141,5 @@ public class ControladorJuego {
 		
 	}
 	
-	public int getNuevoID(){
-		
-		DataPersonaje dbPersonaje = new DataPersonaje();
-				
-		return dbPersonaje.getNuevoID();
-	}
 		
 }

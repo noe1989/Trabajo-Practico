@@ -4,6 +4,8 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+import util.ApplicationException;
+
 public class Personaje {
 	
 	private int idPersonaje;
@@ -90,8 +92,17 @@ public class Personaje {
 	public int getDefensa() {
 		return defensa;
 	}
-	public void setDefensa(int defensa) {
-		this.defensa = defensa;
+	public void setDefensa(int defensa){
+		try{
+			if (defensa >= 0 && defensa <= 20){
+				this.defensa = defensa;
+			}else{
+				throw (new ApplicationException());
+			}
+		}catch(ApplicationException e){
+			e.errorDePuntajes();
+			
+		}
 	}
 	
 	
@@ -99,7 +110,15 @@ public class Personaje {
 		return evasion;
 	}
 	public void setEvasion(int evasion) {
-		this.evasion = evasion;
+		try{
+			if (defensa >= 0 && defensa <= 80){
+				this.evasion = evasion;
+			}else{
+				throw (new ApplicationException());
+			}
+		}catch(ApplicationException e){
+			e.errorDePuntajes();
+		}
 	}
 	
 	
@@ -137,9 +156,20 @@ public class Personaje {
 		int energiaARecupearar = energia * defensa / 100;
 		int vidaARecuperar = vida * defensa / 250;
 		
+
+		if(vida >= (vidaActual + vidaARecuperar)){
+			vidaActual = vidaActual + vidaARecuperar;
+		}else{
+			vidaActual = vida;
+		}
+			
+		if (energia >= (energiaActual + energiaARecupearar)){
+			energiaActual =energiaActual + energiaARecupearar;
+		}else{
+			energiaActual = energia;
+		}
+
 		
-		vidaActual = vidaActual + vidaARecuperar;
-		energiaActual =energiaActual + energiaARecupearar;
 	}
 	
 	public void sumarPuntaje(){

@@ -3,17 +3,16 @@ package database;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import entidades.*;
 
 
 
 public class DataPersonaje {
 	
-	
 	public DataPersonaje(){
 		
 	}
-	
 	
 	
 	public void add(Personaje p){
@@ -146,35 +145,41 @@ public class DataPersonaje {
 		return p;
 	}
 	
-	public int getNuevoID(){
-		
-		ResultSet rs = null;
+	
+public Boolean getByNombre(String nombre){
+				
 		PreparedStatement stmt = null;
+		ResultSet rs = null;
 		
-		int a = 0;
+		Boolean p = true;
 		
-		try {
-			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("SELECT ifnull(max(idPersonaje),0) as idPersonaje FROM personajes;");
+		try{
+			stmt = FactoryConexion.getInstancia().getConn().prepareStatement("SELECT nombre FROM personajes WHERE nombre like ?");
+			stmt.setString(1, nombre);
 			rs = stmt.executeQuery();
 			
-			a = rs.getInt("idPersonaje");
-		
+			if(rs!=null && rs.next()){
+				p = false;
+			}
+				
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}finally{
-			if(rs!=null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
+				if(rs!=null) {
+					try {
+						rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
-			}
-			
-			FactoryConexion.getInstancia().releaseConn();
-		}		
+				
+				FactoryConexion.getInstancia().releaseConn();
+		}
 		
-		return a+1;
+		
+		return p;
 	}
+	
+	
 
 }

@@ -1,6 +1,7 @@
 package juego;
 
 import entidades.Personaje;
+import util.ApplicationException;
 
 public class Partida {
 	
@@ -40,20 +41,24 @@ public class Partida {
 	
 	public void atacar(int puntosAtaque){
 		
-		turno.atacar(puntosAtaque);
-		
-		if(turno.getIdPersonaje()== ctrl.getJugador1().getIdPersonaje()){
-			ctrl.getJugador2().recibirAtaque(puntosAtaque);
-		}else{
-			ctrl.getJugador1().recibirAtaque(puntosAtaque);
+		try{
+			if(puntosAtaque <= turno.getEnergiaActual()){
+				turno.atacar(puntosAtaque);
+
+				if(turno.getIdPersonaje()== ctrl.getJugador1().getIdPersonaje()){
+					ctrl.getJugador2().recibirAtaque(puntosAtaque);
+				}else{
+					ctrl.getJugador1().recibirAtaque(puntosAtaque);
+				}
+			}else{
+				throw (new ApplicationException());
+			}
+		}catch(ApplicationException e){
+			e.errorPuntosDeAtaque();
 		}
-		
-		
 		
 	}
 	
-	
-
 
 	public void defender(){
 		

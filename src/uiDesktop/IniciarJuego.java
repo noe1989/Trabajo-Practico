@@ -6,6 +6,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import database.DataPersonaje;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -17,6 +20,8 @@ import javax.swing.JSeparator;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
@@ -186,6 +191,17 @@ public class IniciarJuego extends JPanel {
 		
 		btnContinuar.setEnabled(false);
 		
+		DataPersonaje dbPersonaje = new DataPersonaje();
+		ResultSet rs = dbPersonaje.gridPersonajes(); 
+		try {
+			if(!rs.next()){
+				btnSeleccionar.setEnabled(false);
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 				
 		
 	}
@@ -208,8 +224,7 @@ public class IniciarJuego extends JPanel {
 		CrearNuevoPersonaje cnp = new CrearNuevoPersonaje(frame);
 		
 		cnp.setCtrl(ctrl);
-		cnp.completarID();
-		
+			
 		((TurnBasedCombat) frame).cambiarPanel(cnp, "CrearNuevoPersonaje");
 	}
 	
@@ -217,6 +232,9 @@ public class IniciarJuego extends JPanel {
 		
 		if(ctrl.getJugador1() != null){
 			textJugador1.setText(String.valueOf(ctrl.getJugador1().getNombre()));
+			if(!btnSeleccionar.isEnabled()){
+				btnSeleccionar.setEnabled(true);
+			}
 		}
 		if(ctrl.getJugador2() != null){
 				textJugador2.setText(String.valueOf(ctrl.getJugador2().getNombre()));
