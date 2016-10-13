@@ -24,5 +24,11 @@ public class ApplicationException extends Exception{
 		JOptionPane.showMessageDialog(null, "Nombre ingresado ya existe. Por favor, ingrese otro.", 
 				"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
 	}
+
+	public void excedeLimitePtsTotales() {
+		JOptionPane.showMessageDialog(null, "La suma total de los atributos del personaje, no deben superar los 200 puntos.", 
+				"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
+		
+	}
 	
 }

@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 
 import entidades.Personaje;
 import juego.ControladorJuego;
+import util.ApplicationException;
 
 import javax.swing.JSeparator;
 
@@ -259,20 +260,29 @@ public class CrearNuevoPersonaje extends JPanel {
 		
 		Personaje personaje = new Personaje();
 		
-		personaje.setDefensa(Integer.parseInt(textDefensa.getText()));
-		personaje.setEnergia(Integer.parseInt(textEnergia.getText()));
-		personaje.setEvasion(Integer.parseInt(textEvasion.getText()));
-		personaje.setVida(Integer.parseInt(textVida.getText()));
-		personaje.setNombre(textNombre.getText());
-		
-		ctrl.agregarPersonaje(personaje);
-		
-		if(ctrl.getJugador1() == null){
-			ctrl.setJugador1(personaje);
-		}else{
-			ctrl.setJugador2(personaje);
+		try{
+			if(Integer.parseInt(textPuntosRestantes.getText()) >= 0){
+			
+				personaje.setDefensa(Integer.parseInt(textDefensa.getText()));
+				personaje.setEnergia(Integer.parseInt(textEnergia.getText()));
+				personaje.setEvasion(Integer.parseInt(textEvasion.getText()));
+				personaje.setVida(Integer.parseInt(textVida.getText()));
+				personaje.setNombre(textNombre.getText());
+				
+				ctrl.agregarPersonaje(personaje);
+				
+				if(ctrl.getJugador1() == null){
+					ctrl.setJugador1(personaje);
+				}else{
+					ctrl.setJugador2(personaje);
+				}
+				
+				((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
+			}else{
+				throw (new ApplicationException());
+			}
+		}catch(ApplicationException e){
+			e.excedeLimitePtsTotales();
 		}
-		
-		((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
 	}
 }

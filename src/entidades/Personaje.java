@@ -141,9 +141,9 @@ public class Personaje {
 		int numAleatorio = rand.nextInt(100)+1; 
 		
 		if((numAleatorio)>evasion){
-			JOptionPane.showMessageDialog(null, "EVADIDO! Great!.", "Turn Based Combat", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "EVADIDO! Great!", "Turn Based Combat", JOptionPane.INFORMATION_MESSAGE);
 		}else{
-			JOptionPane.showMessageDialog(null, "NO EVADIDO!.", "Turn Based Combat", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "NO EVADIDO!", "Turn Based Combat", JOptionPane.INFORMATION_MESSAGE);
 			
 			vidaActual = vidaActual - pts;
 			
