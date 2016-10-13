@@ -3,6 +3,7 @@ package uiDesktop;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import entidades.Personaje;
@@ -262,22 +263,33 @@ public class CrearNuevoPersonaje extends JPanel {
 		
 		try{
 			if(Integer.parseInt(textPuntosRestantes.getText()) >= 0){
-			
-				personaje.setDefensa(Integer.parseInt(textDefensa.getText()));
-				personaje.setEnergia(Integer.parseInt(textEnergia.getText()));
-				personaje.setEvasion(Integer.parseInt(textEvasion.getText()));
-				personaje.setVida(Integer.parseInt(textVida.getText()));
-				personaje.setNombre(textNombre.getText());
-				
-				ctrl.agregarPersonaje(personaje);
-				
-				if(ctrl.getJugador1() == null){
-					ctrl.setJugador1(personaje);
-				}else{
-					ctrl.setJugador2(personaje);
+				try{
+					personaje.setDefensa(Integer.parseInt(textDefensa.getText()));
+					personaje.setEnergia(Integer.parseInt(textEnergia.getText()));
+					personaje.setEvasion(Integer.parseInt(textEvasion.getText()));
+					personaje.setVida(Integer.parseInt(textVida.getText()));
+					personaje.setNombre(textNombre.getText());
+								
+					try {
+						ctrl.agregarPersonaje(personaje);
+						
+						if(ctrl.getJugador1() == null){
+							ctrl.setJugador1(personaje);
+						}else{
+							ctrl.setJugador2(personaje);
+						}
+						
+						((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
+					} catch (ApplicationException e) {
+						
+						e.errorNombrePersonaje();
+					}
+				}catch(ApplicationException e){
+					e.errorDePuntajes();
+				}catch(NumberFormatException ne){
+					JOptionPane.showMessageDialog(null, "Por favor ingrese un número", 
+							"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
 				}
-				
-				((TurnBasedCombat) frame).cambiarAPanelExistente("IniciarJuego");
 			}else{
 				throw (new ApplicationException());
 			}

@@ -5,10 +5,12 @@ import javax.swing.JPanel;
 
 import entidades.Personaje;
 import juego.ControladorJuego;
+import util.ApplicationException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
@@ -29,6 +31,8 @@ public class ModificarJugador extends JPanel {
 	private JTextField textPuntosRestantes;
 	
 	private int ptsTot;
+	
+	private int ptsTotalesJugador;
 	
 	
 	public ControladorJuego getCtrl() {
@@ -68,7 +72,7 @@ public class ModificarJugador extends JPanel {
 		textVida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 
-            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	ptsTot = ptsTotalesJugador - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
             	
                 textPuntosRestantes.setText(String.valueOf(ptsTot));
             }
@@ -79,7 +83,7 @@ public class ModificarJugador extends JPanel {
 		textEnergia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 
-            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	ptsTot = ptsTotalesJugador - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
             	
                 textPuntosRestantes.setText(String.valueOf(ptsTot));
             }
@@ -90,7 +94,7 @@ public class ModificarJugador extends JPanel {
 		textEvasion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 
-            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	ptsTot = ptsTotalesJugador - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
             	
                 textPuntosRestantes.setText(String.valueOf(ptsTot));
             }
@@ -101,7 +105,7 @@ public class ModificarJugador extends JPanel {
 		textDefensa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 
-            	ptsTot = 200 - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
+            	ptsTot = ptsTotalesJugador - Integer.parseInt(textVida.getText())- Integer.parseInt(textEnergia.getText())- Integer.parseInt(textDefensa.getText())- Integer.parseInt(textEvasion.getText());
             	
                 textPuntosRestantes.setText(String.valueOf(ptsTot));
             }
@@ -204,15 +208,29 @@ public class ModificarJugador extends JPanel {
 		setLayout(groupLayout);
 		
 		MapearJugadorAFormulario(p);
+		ptsTotalesJugador = p.getPuntosTotales();
 		
 	}
 	
 	public void aplicar(JFrame frame, Personaje p){
-		
-		p = MapearJugadorDeFormulario(p);
-		ctrl.modificarPersonaje(p);
-		
-		((TurnBasedCombat) frame).cambiarAPanelExistente("PlayerSeleccionado");
+		try{
+			if (Integer.parseInt(textPuntosRestantes.getText()) >= 0){
+				try{
+					p = MapearJugadorDeFormulario(p);
+					ctrl.modificarPersonaje(p);
+					((TurnBasedCombat) frame).cambiarAPanelExistente("PlayerSeleccionado");
+				}catch(ApplicationException e){
+					e.errorDePuntajes();
+				}catch(NumberFormatException ne){
+					JOptionPane.showMessageDialog(null, "Por favor ingrese un número", 
+							"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}else{
+				throw (new ApplicationException());
+			}
+		}catch(ApplicationException e){
+			e.excedeLimitePtsTotales();
+		}
 		
 	}
 	
@@ -230,14 +248,13 @@ public class ModificarJugador extends JPanel {
 		
 	}
 	
-	public Personaje MapearJugadorDeFormulario(Personaje p){
-		p.setPuntosTotales(Integer.parseInt(textPtsTotales.getText()));
-		p.setDefensa(Integer.parseInt(textDefensa.getText()));
-		p.setEnergia(Integer.parseInt(textEnergia.getText()));
-		p.setEvasion(Integer.parseInt(textEvasion.getText()));
-		p.setVida(Integer.parseInt(textVida.getText()));
+	public Personaje MapearJugadorDeFormulario(Personaje p) throws ApplicationException{
+			p.setPuntosTotales(Integer.parseInt(textPtsTotales.getText()));
+			p.setDefensa(Integer.parseInt(textDefensa.getText()));
+			p.setEvasion(Integer.parseInt(textEvasion.getText()));
+			p.setEnergia(Integer.parseInt(textEnergia.getText()));
+			p.setVida(Integer.parseInt(textVida.getText()));
 		
-		
-		return p;
+			return p;
 	}
 }

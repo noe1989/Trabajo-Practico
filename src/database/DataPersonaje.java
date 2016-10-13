@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entidades.*;
+import util.ApplicationException;
 
 
 
@@ -129,6 +130,8 @@ public class DataPersonaje {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} catch (ApplicationException e) {
+				e.errorDePuntajes();
 			}finally{
 				if(rs!=null) {
 					try {

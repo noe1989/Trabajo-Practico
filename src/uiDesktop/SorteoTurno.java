@@ -3,6 +3,7 @@ package uiDesktop;
 import javax.swing.JPanel;
 
 import juego.ControladorJuego;
+import util.ApplicationException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -51,19 +52,37 @@ public class SorteoTurno extends JPanel {
 		btnSortear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				int op1=0;
+				int op2=0;
+				
+				try {
+					op1 = Integer.parseInt(textNroJugador1.getText());
+					op2 = Integer.parseInt(textNroJugador2.getText());
+				
+					if((op1>0 && op1<6) && (op2>0 && op2<6)){
+						if(op1!=op2){
+							
+							ctrl.iniciarPartida();
 		
-				int op1 = Integer.parseInt(textNroJugador1.getText());
-				int op2 = Integer.parseInt(textNroJugador2.getText());
+							ctrl.sorteo(op1,op2);
+						
+							JOptionPane.showMessageDialog(null, "Comienza jugador: "+ ctrl.getPartida().getTurno().getNombre(), 
+									"Sorteo", JOptionPane.INFORMATION_MESSAGE);
+							play();
+						}else{
+							throw(new ApplicationException());
+						}
+					}else{
+						throw(new ApplicationException());
+					}
+				}catch(NumberFormatException ne){
+					JOptionPane.showMessageDialog(null, "Por favor ingrese un número", 
+					"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
+				}catch(ApplicationException e){
+					e.fueraDeRango();
+				}
 				
-				ctrl.iniciarPartida();
-
-				ctrl.sorteo(op1,op2);
-				
-				JOptionPane.showMessageDialog(null, "Comienza jugador: "+ ctrl.getPartida().getTurno().getNombre(), 
-						"Sorteo", JOptionPane.INFORMATION_MESSAGE);
-				play();
-			}
-		});
+		}});
 		btnSortear.setFont(new Font("Arial", Font.BOLD, 18));
 		
 		textNroJugador1 = new JTextField();

@@ -76,49 +76,50 @@ public class Personaje {
 	public int getVida() {
 		return vida;
 	}
-	public void setVida(int vida) {
+	
+	public void setVida(int vida) throws ApplicationException{
+		if (vida>=0){
 		this.vida = vida;
 	}
-	
+		else{
+			throw (new ApplicationException());
+		}
+	}
 	
 	public int getEnergia() {
 		return energia;
 	}
-	public void setEnergia(int energia) {
+	public void setEnergia(int energia)throws ApplicationException {
+		if (energia>=0){
 		this.energia = energia;
 	}
-	
-	
+		else{
+			throw (new ApplicationException());
+		}
+	}
 	public int getDefensa() {
 		return defensa;
 	}
-	public void setDefensa(int defensa){
-		try{
+	public void setDefensa(int defensa) throws ApplicationException{
+
 			if (defensa >= 0 && defensa <= 20){
 				this.defensa = defensa;
 			}else{
 				throw (new ApplicationException());
 			}
-		}catch(ApplicationException e){
-			e.errorDePuntajes();
-			
-		}
 	}
 	
 	
 	public int getEvasion() {
 		return evasion;
 	}
-	public void setEvasion(int evasion) {
-		try{
-			if (defensa >= 0 && defensa <= 80){
+	public void setEvasion(int evasion) throws ApplicationException {
+
+			if (evasion >= 0 && evasion <= 80){
 				this.evasion = evasion;
 			}else{
 				throw (new ApplicationException());
 			}
-		}catch(ApplicationException e){
-			e.errorDePuntajes();
-		}
 	}
 	
 	

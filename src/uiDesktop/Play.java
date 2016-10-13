@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import juego.ControladorJuego;
 import juego.Partida;
+import util.ApplicationException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -183,20 +184,28 @@ public class Play extends JPanel {
 		btnAtacarJugador2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int ptsAtaqueJug2 = Integer.parseInt(textPtsAtaqueJug2.getText());
+				int ptsAtaqueJug2=0;
+				try {
+					ptsAtaqueJug2 = Integer.parseInt(textPtsAtaqueJug2.getText());
 				
-				partida.atacar(ptsAtaqueJug2);
-				
-				MapearJugador1(ctrl.getJugador1());
-				MapearJugador2(ctrl.getJugador2());
-				
-				
-				if(ctrl.getJugador1().getVidaActual() <= 0){
-					finJuego();					
-				}else{
-					//Despues de realizar todo, cambiar de panel
-					ctrl.cambiarTurno();
-					turnoJugador();
+					partida.atacar(ptsAtaqueJug2);
+								
+					MapearJugador1(ctrl.getJugador1());
+					MapearJugador2(ctrl.getJugador2());
+					
+					
+					if(ctrl.getJugador1().getVidaActual() <= 0){
+						finJuego();					
+					}else{
+						//Despues de realizar todo, cambiar de panel
+						ctrl.cambiarTurno();
+						turnoJugador();
+					}
+				}catch(NumberFormatException ne){
+					JOptionPane.showMessageDialog(null, "Por favor ingrese un número", 
+							"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
+				} catch (ApplicationException e1) {
+					e1.errorPuntosDeAtaque();
 				}
 				
 			}
@@ -324,24 +333,30 @@ public class Play extends JPanel {
 		btnAtacarJugador1 = new JButton("Atacar");
 		btnAtacarJugador1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				int ptsAtaqueJug1 = Integer.parseInt(textPtsAtaqueJug1.getText());
-				
-				partida.atacar(ptsAtaqueJug1);
-				
-				MapearJugador1(ctrl.getJugador1());
-				MapearJugador2(ctrl.getJugador2());
+				int ptsAtaqueJug1 =0;
+				try{
+					ptsAtaqueJug1 = Integer.parseInt(textPtsAtaqueJug1.getText());
 				
 				
-				if(ctrl.getJugador2().getVidaActual() <= 0){
-					finJuego();
+					partida.atacar(ptsAtaqueJug1);					
+					MapearJugador1(ctrl.getJugador1());
+					MapearJugador2(ctrl.getJugador2());
 					
-				}else{
-					//Despues de realizar todo, cambiar de panel
-					ctrl.cambiarTurno();
-					turnoJugador();
+					
+					if(ctrl.getJugador2().getVidaActual() <= 0){
+						finJuego();
+						
+					}else{
+						//Despues de realizar todo, cambiar de panel
+						ctrl.cambiarTurno();
+						turnoJugador();
+					}
+				}catch(NumberFormatException ne){
+					JOptionPane.showMessageDialog(null, "Por favor ingrese un número", 
+							"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
+				}catch (ApplicationException e1) {
+					e1.errorPuntosDeAtaque();
 				}
-				
 				
 				
 			}
@@ -490,6 +505,9 @@ public class Play extends JPanel {
 		
 		textJugador1.setEnabled(estado);
 		
+		lblPuntosDeAtaqueJug1.setEnabled(estado);
+		textPtsAtaqueJug1.setEnabled(estado);
+		
 	}
 	
 	private void setEnablePanel2(Boolean estado){
@@ -514,6 +532,9 @@ public class Play extends JPanel {
 		textEnergiaJugador2.setEnabled(estado);
 	
 		textJugador2.setEnabled(estado);
+		
+		lblPuntosDeAtaqueJug2.setEnabled(estado);
+		textPtsAtaqueJug2.setEnabled(estado);
 	}
 	
 	public void turnoJugador(){

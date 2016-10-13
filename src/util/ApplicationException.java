@@ -11,12 +11,12 @@ public class ApplicationException extends Exception{
 	}
 	
 	public void errorDePuntajes(){
-		JOptionPane.showMessageDialog(null, "Puntos de Defensa y/o Evasión incorrectos.", 
+		JOptionPane.showMessageDialog(null, "Puntos incorrectos!  Ingrese un numero mayor o igual a cero", 
 				"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void errorPuntosDeAtaque(){
-		JOptionPane.showMessageDialog(null, "Ingrese puntos de energía que no sean mayores que la energía restante.", 
+		JOptionPane.showMessageDialog(null, "Ingrese un valor mayor a cero y menor o igual a la Energía", 
 				"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
@@ -27,6 +27,12 @@ public class ApplicationException extends Exception{
 
 	public void excedeLimitePtsTotales() {
 		JOptionPane.showMessageDialog(null, "La suma total de los atributos del personaje, no deben superar los 200 puntos.", 
+				"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
+		
+	}
+
+	public void fueraDeRango() {
+		JOptionPane.showMessageDialog(null, "Los valores no deben repetirse y deben estar entre 1 y 5", 
 				"Error. Vuelva a intentar", JOptionPane.INFORMATION_MESSAGE);
 		
 	}

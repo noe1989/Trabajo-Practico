@@ -38,22 +38,20 @@ public class ControladorJuego {
 
 	
 	
-	public void agregarPersonaje(Personaje personaje){
+	public void agregarPersonaje(Personaje personaje) throws ApplicationException{
 	
 		DataPersonaje dbPersonaje = new DataPersonaje();
 		
 		Boolean ok = dbPersonaje.getByNombre(personaje.getNombre());
 			
-		try {
+	
 			if(ok){
 				personaje.setPuntosTotales(200); //Cada vez que se agrega un nuevo personaje siempre tiene inicialmente 200 puntosTotales
 				dbPersonaje.add(personaje);
 			}else{
 				throw (new ApplicationException());
 			}
-		}catch (ApplicationException e) {
-				e.errorNombrePersonaje();
-			}
+		
 	}
 
 

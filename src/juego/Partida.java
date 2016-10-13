@@ -39,22 +39,18 @@ public class Partida {
 	}
 	
 	
-	public void atacar(int puntosAtaque){
+	public void atacar(int puntosAtaque) throws ApplicationException{
 		
-		try{
-			if(puntosAtaque <= turno.getEnergiaActual()){
-				turno.atacar(puntosAtaque);
+		if(puntosAtaque <= turno.getEnergiaActual() && puntosAtaque>=0){
+			turno.atacar(puntosAtaque);
 
-				if(turno.getIdPersonaje()== ctrl.getJugador1().getIdPersonaje()){
-					ctrl.getJugador2().recibirAtaque(puntosAtaque);
-				}else{
-					ctrl.getJugador1().recibirAtaque(puntosAtaque);
-				}
+			if(turno.getIdPersonaje()== ctrl.getJugador1().getIdPersonaje()){
+				ctrl.getJugador2().recibirAtaque(puntosAtaque);
 			}else{
-				throw (new ApplicationException());
+				ctrl.getJugador1().recibirAtaque(puntosAtaque);
 			}
-		}catch(ApplicationException e){
-			e.errorPuntosDeAtaque();
+		}else{
+			throw (new ApplicationException());
 		}
 		
 	}
