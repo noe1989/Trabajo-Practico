@@ -41,7 +41,7 @@ public class Partida {
 	
 	public void atacar(int puntosAtaque) throws ApplicationException{
 		
-		if(puntosAtaque <= turno.getEnergiaActual() && puntosAtaque>=0){
+		if(puntosAtaque <= turno.getEnergiaActual() && puntosAtaque>0){
 			turno.atacar(puntosAtaque);
 
 			if(turno.getIdPersonaje()== ctrl.getJugador1().getIdPersonaje()){
