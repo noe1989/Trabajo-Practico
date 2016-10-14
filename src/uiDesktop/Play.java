@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 
 import juego.ControladorJuego;
 import juego.Partida;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 import util.ApplicationException;
 
 import javax.swing.GroupLayout;
@@ -24,6 +26,8 @@ import entidades.Personaje;
 import java.awt.Color;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -551,18 +555,33 @@ public class Play extends JPanel {
 		
 		switch (turno) {
 	        case 1:  
+	        	sonido("sonidos/pop.wav");
 	        	setEnablePanel1(estado);
 	        	setEnablePanel2(!estado);
-	            break;
+	        	break;
 	        case 2:
+	        	sonido("sonidos/pop.wav");
 	        	setEnablePanel1(!estado);
 	        	setEnablePanel2(estado);
-				
-	            break;
+				break;
+		}
+	}
+	
+	private void sonido(String path){
+		
+		try{
+			InputStream in = new FileInputStream(path);
+		
+			AudioStream audio = new AudioStream(in);
+		
+			AudioPlayer.player.start(audio);
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 	
 	private void finJuego(){
+		sonido("sonidos/win.wav");
 		JOptionPane.showMessageDialog(null, "Ganador Jugador: "+ partida.getTurno().getNombre(), "Ganador", JOptionPane.INFORMATION_MESSAGE);
 		
 		partida.finJuego();
